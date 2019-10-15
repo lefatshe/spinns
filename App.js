@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Header from "./component/Header";
-import WelcomePage from "./component/pages/Welcome";
-import { Font, AppLoading } from "expo";
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
+import AppNavigator from "./component/navigation/AppNavigator";
 
 const fetchFonts = () => {
     return Font.loadAsync({
@@ -24,12 +24,7 @@ export default function App() {
         );
     }
 
-  return (
-    <View style={styles.screen}>
-      <Header title="Welcome" />
-      <WelcomePage date="MON . 12 . 2019" />
-    </View>
-  );
+  return <AppNavigator />;
 }
 
 const styles = StyleSheet.create({

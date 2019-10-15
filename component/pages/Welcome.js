@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     View,
     StyleSheet,
@@ -14,7 +14,7 @@ import Card from '../widgets/Card';
 import Colors from '../constants/colors'
 
 const WelcomePage = props => {
-    const [ buttonWidth, setButtonWidth ] = useState(Dimensions.get('window').width / 4);
+    const [buttonWidth, setButtonWidth] = useState(Dimensions.get('window').width / 4);
 
     useEffect(() => {
         const updateLayout = () => {
@@ -30,25 +30,23 @@ const WelcomePage = props => {
     return (
         <ScrollView>
             <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30}>
-                <TouchableWithoutFeedback
-                    onPress={() => {
-                        Keyboard.dismiss();
-                    }}
-                >
-        <View style={styles.screen}>
-            {/*<Text style={styles.headerTitle}>{props.date}</Text>*/}
-            <View style={styles.imgContainer}>
-                <Image source={require('../../assets/images/logo.png')}
-                       style={styles.image}
-                       resizeMode="cover" />
-            </View>
-            <Card style={styles.inputContainer}>
-                <View style={styles.buttonContainer}>
-                    <View style={{width: buttonWidth}}><Button title="Signin" color={Colors.deepPrimaryColor}/></View>
-                    <View style={{width: buttonWidth}}><Button title="Signup" color={Colors.deepPrimaryColor}/></View>
-                </View>
-            </Card>
-        </View>
+                <TouchableWithoutFeedback onPress={() => {Keyboard.dismiss();}}>
+                    <View style={styles.screen}>
+                        {/*<Text style={styles.headerTitle}>{props.date}</Text>*/}
+                        <View style={styles.imgContainer}>
+                            <Image source={require('../../assets/images/logo.png')} style={styles.image} resizeMode="cover"/>
+                        </View>
+                        <Card style={styles.inputContainer}>
+                            <View style={styles.buttonContainer}>
+                                <View style={{width: buttonWidth}}>
+                                    <Button title="Signin" onPress={() => {props.navigation.navigate({routeName: 'SignIn'});}} color={Colors.deepPrimaryColor}/>
+                                </View>
+                                <View style={{width: buttonWidth}}>
+                                    <Button title="Signup" onPress={() => {props.navigation.navigate({routeName: 'SignUp'});}} color={Colors.deepPrimaryColor}/>
+                                </View>
+                            </View>
+                        </Card>
+                    </View>
                 </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
         </ScrollView>
@@ -92,8 +90,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15
     },
     headerTitle: {
-       marginVertical: 10,
-       // fontFamily: 'open-sans-bold'
+        marginVertical: 10,
+        // fontFamily: 'open-sans-bold'
     }
 });
 export default WelcomePage;
