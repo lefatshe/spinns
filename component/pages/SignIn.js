@@ -7,7 +7,7 @@ const SignIn = props => {
         <View style={styles.screen}>
             {/*<Text>SignIn Screen!</Text>*/}
             <View>
-                <Button title="Start" onPress={() => {props.navigation.navigate({routeName: 'Start'});}} color={Colors.deepPrimaryColor}/>
+                <Button title="Start" onPress={() => {props.navigation.navigate({routeName: 'Categories'});}} color={Colors.deepPrimaryColor}/>
             </View>
         </View>
     );

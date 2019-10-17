@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {
+    Text,
     View,
     StyleSheet,
     Button,
@@ -39,13 +40,16 @@ const WelcomePage = props => {
                         <Card style={styles.inputContainer}>
                             <View style={styles.buttonContainer}>
                                 <View style={{width: buttonWidth}}>
-                                    <Button title="Signin" onPress={() => {props.navigation.navigate({routeName: 'SignIn'});}} color={Colors.deepPrimaryColor}/>
+                                    <Button title="Signin" onPress={() => {props.navigation.navigate({routeName: 'Categories'});}} color={Colors.deepPrimaryColor}/>
                                 </View>
                                 <View style={{width: buttonWidth}}>
                                     <Button title="Signup" onPress={() => {props.navigation.navigate({routeName: 'SignUp'});}} color={Colors.deepPrimaryColor}/>
                                 </View>
                             </View>
                         </Card>
+                        <View>
+                            <Text style={styles.footText} >The reason behind this app approach is, mostly common people and students will use this app. And its created to take the load off their hands and not make it more complex getting laundry washing done.</Text>
+                        </View>
                     </View>
                 </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
@@ -88,6 +92,17 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'space-between',
         paddingHorizontal: 15
+    },
+    footText: {
+        width: '60%',
+        // maxWidth: '80%',
+        maxWidth: '95%',
+        minWidth: 300,
+        alignItems: 'center',
+        fontFamily: 'open-sans',
+        fontSize: 10,
+        textAlign: 'center',
+        marginTop: 40
     },
     headerTitle: {
         marginVertical: 10,
