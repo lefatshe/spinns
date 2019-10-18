@@ -1,5 +1,5 @@
-import { Platform } from 'react-native';
-import { createStackNavigator, createAppContainer, createBottomTabNavigator, } from 'react-navigation';
+import {Platform} from 'react-native';
+import {createStackNavigator, createAppContainer, createBottomTabNavigator,} from 'react-navigation';
 
 import SignUpPage from '../pages/SignUp';
 import SignInPage from '../pages/SignIn';
@@ -10,11 +10,22 @@ import CategoryWashScreen from "../pages/CategoryWashScreen"
 
 import Colors from '../constants/colors';
 import WashDetails from "../pages/WashDetails";
-import { Ionicons } from '@expo/vector-icons';
+import {Ionicons} from '@expo/vector-icons';
 import FavoritesScreen from "../FavoritesScreen";
 import React from "react";
 import ProfileScreen from "../ProfileScreen";
 import OrderScreen from "../OrdersScreen";
+
+import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
+
+const defaultStackNavOptions = {
+    headerStyle: {
+        backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
+    },
+    headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
+    headerTitle: ''
+};
+
 
 const WahesNavigator = createStackNavigator(
     {
@@ -31,71 +42,87 @@ const WahesNavigator = createStackNavigator(
         WashDetail: WashDetails
     },
     {
-        initialRouteName: 'WelcomePage',
-        defaultNavigationOptions: {
-            headerStyle: {
-                backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
-            },
-            headerTintColor:
-                Platform.OS === 'android' ? 'white' : Colors.primaryColor,
-            headerTitle: ''
-        }
+        // initialRouteName: 'WelcomePage',
+        defaultNavigationOptions: defaultStackNavOptions
     }
 );
 
-const SpinnsSiteNavigator = createBottomTabNavigator(
+const FavNavigator = createStackNavigator(
     {
-        Washes: {
-            screen: WahesNavigator,
-            navigationOptions: {
-                tabBarIcon: tabInfo => {
-                    return (
-                        <Ionicons name="ios-shirt" md="md-sync" size={25} color={tabInfo.tintColor}/>
-                    );
-                }
-            }
-        },
-        Favorites: {
-            screen: FavoritesScreen,
-            navigationOptions: {
-                tabBarLabel: 'Favorites',
-                tabBarIcon: tabInfo => {
-                    return (
-                        <Ionicons name="ios-star" size={25} color={tabInfo.tintColor} />
-                    );
-                }
-            }
-        },
-        Orders: {
-            screen: OrderScreen,
-            navigationOptions: {
-                tabBarLabel: 'Order',
-                tabBarIcon: tabInfo => {
-                    return (
-                        <Ionicons name="ios-calendar" size={25} color={tabInfo.tintColor} />
-                    );
-                }
-            }
-        },
-        Profile: {
-            screen: ProfileScreen,
-            navigationOptions: {
-                tabBarLabel: 'Profile',
-                tabBarIcon: tabInfo => {
-                    return (
-                        <Ionicons name="ios-person" size={25} color={tabInfo.tintColor} />
-                    );
-                }
-            }
-        }
+        Favorites: FavoritesScreen,
+        WashDetail: WashDetails
     },
     {
-        tabBarOptions: {
-            activeTintColor: Colors.primaryColor
-        }
+        // initialRouteName: 'Categories',
+        defaultNavigationOptions: defaultStackNavOptions
     }
 );
 
+const tabScreenConfig = {
+    Washes: {
+        screen: WahesNavigator,
+        navigationOptions: {
+            tabBarIcon: tabInfo => {
+                return (
+                    <Ionicons name="ios-shirt" md="md-sync" size={25} color={tabInfo.tintColor}/>
+                );
+            },
+            tabBarColor: Colors.primaryColor
+        }
+    },
+    Favorites: {
+        screen: FavNavigator,
+        navigationOptions: {
+            tabBarLabel: 'Favorites',
+            tabBarIcon: tabInfo => {
+                return (
+                    <Ionicons name="ios-star" size={25} color={tabInfo.tintColor}/>
+                );
+            },
+            tabBarColor: Colors.primaryColor
+        }
+    },
+    Orders: {
+        screen: OrderScreen,
+        navigationOptions: {
+            tabBarLabel: 'Order',
+            tabBarIcon: tabInfo => {
+                return (
+                    <Ionicons name="ios-calendar" size={25} color={tabInfo.tintColor}/>
+                );
+            },
+            tabBarColor: Colors.primaryColor
+        }
+    },
+    Profile: {
+        screen: ProfileScreen,
+        navigationOptions: {
+            tabBarLabel: 'Profile',
+            tabBarIcon: tabInfo => {
+                return (
+                    <Ionicons name="ios-person" size={25} color={tabInfo.tintColor}/>
+                );
+            },
+            tabBarColor: Colors.primaryColor
+        }
+    }
+};
+
+
+const SpinnsSiteNavigator =
+    Platform.OS === 'android'
+        ? createMaterialBottomTabNavigator(tabScreenConfig, {
+            activeTintColor: 'white',
+            shifting: true,
+            barStyle: {
+                backgroundColor: Colors.primaryColor
+            }
+        })
+        : createBottomTabNavigator(tabScreenConfig, {
+            tabBarOptions: {
+                activeTintColor: Colors.accentColor
+            }
+        });
 
 
 export default createAppContainer(SpinnsSiteNavigator);
