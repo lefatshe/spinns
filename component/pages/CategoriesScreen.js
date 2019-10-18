@@ -9,27 +9,21 @@ import {
 
 import {CATEGORIES} from '../../assets/data/app-data';
 import Card from "../widgets/Card";
+import CategoryGridTiles from './CategoryGridTile'
 
 const CategoriesScreen = props => {
     const renderGridItem = itemData => {
-        return (
-            <TouchableOpacity
-                style={styles.gridItem}
-                onPress={() => {
-                    props.navigation.navigate({
-                        routeName: 'WashScreen',
-                        params: {
-                            categoryId: itemData.item.id
-                        }
-                    });
-                }}
-            >
-                <Card style={styles.cardContainer}>
-                    <Text style={styles.headerTitle}>{itemData.item.title}</Text>
-                    <Text style={styles.eta}>{itemData.item.eta}</Text>
-                </Card>
-            </TouchableOpacity>
-        );
+        return <CategoryGridTiles
+            title={itemData.item.title}
+            eta={itemData.item.eta}
+            onSelect={() => {
+            props.navigation.navigate({
+                routeName: 'WashScreen',
+                params: {
+                    categoryId: itemData.item.id
+                }
+            });
+        }}/>;
     };
 
     return (
@@ -59,11 +53,7 @@ const styles = StyleSheet.create({
     cardContainer: {
         height: 150
     },
-    gridItem: {
-        flex: 1,
-        margin: 15,
-        height: 150
-    },
+
     headerTitle: {
             // marginVertical: 10,
         fontFamily: 'open-sans-bold'

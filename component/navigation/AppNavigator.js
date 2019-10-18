@@ -9,7 +9,7 @@ import CategoriesScreen from "../pages/CategoriesScreen";
 import CategoryWashScreen from "../pages/CategoryWashScreen"
 
 import Colors from '../constants/colors';
-import WashDetailScreen from "../pages/CategoryDetailScreen";
+import WashDetails from "../pages/WashDetails";
 
 const AppNavigator = createStackNavigator(
     {
@@ -23,7 +23,7 @@ const AppNavigator = createStackNavigator(
         Start: StartApp,
         SignUp: SignUpPage,
         SignIn: SignInPage,
-        WashDetail: WashDetailScreen
+        WashDetail: WashDetails
     },
     {
         initialRouteName: 'WelcomePage',

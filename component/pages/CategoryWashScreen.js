@@ -1,30 +1,41 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import {View, Text, FlatList, StyleSheet} from 'react-native';
 
-import { CATEGORIES } from '../../assets/data/app-data';
+import {CATEGORIES, WASHES} from '../../assets/data/app-data';
+import WashItem from "./WashItemList";
 
 const CategoryWashScreen = props => {
-    const catId = props.navigation.getParam('categoryId');
-
-    const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
-
-    return (
-        <View style={styles.screen}>
-            <Text>The Category Wash Screen!</Text>
-            <Text>{selectedCategory.title}</Text>
-            <Button
-                title="Go to Details"
-                onPress={() => {
+    const renderWashItem = itemData => {
+        return (
+            <WashItem
+                title={itemData.item.title}
+                image={itemData.item.imageUrl}
+                price={itemData.item.price}
+                onSelectWash={() => {
                     props.navigation.navigate({
-                        routeName: 'WashDetail'
+                        routeName: 'WashDetail',
+                        params: {
+                            washId: itemData.item.id
+                        }
                     });
                 }}
             />
-            <Button
-                title="Go Back"
-                onPress={() => {
-                    props.navigation.pop();
-                }}
+        );
+    };
+
+    const catId = props.navigation.getParam('categoryId');
+
+    const displayedWashes = WASHES.filter(
+        wash => wash.categoryIds.indexOf(catId) >= 0
+    );
+
+    return (
+        <View style={styles.screen}>
+            <FlatList
+                data={displayedWashes}
+                keyExtractor={(item, index) => item.id}
+                renderItem={renderWashItem}
+                style={{width: '100%'}}
             />
         </View>
     );
@@ -44,7 +55,8 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: 15
     }
 });
 
