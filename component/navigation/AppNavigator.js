@@ -1,6 +1,10 @@
 import {Platform} from 'react-native';
-import {createStackNavigator, createAppContainer, createBottomTabNavigator,} from 'react-navigation';
-
+import {
+    createStackNavigator,
+    createBottomTabNavigator,
+    createAppContainer,
+    createDrawerNavigator
+} from 'react-navigation'
 import SignUpPage from '../pages/SignUp';
 import SignInPage from '../pages/SignIn';
 import WelcomePage from "../pages/Welcome";
@@ -29,7 +33,7 @@ const defaultStackNavOptions = {
 
 const WahesNavigator = createStackNavigator(
     {
-        WelcomePage: WelcomePage,
+        // WelcomePage: WelcomePage,
         Categories: {
             screen: CategoriesScreen
         },
@@ -94,18 +98,18 @@ const tabScreenConfig = {
             tabBarColor: Colors.primaryColor
         }
     },
-    Profile: {
-        screen: ProfileScreen,
-        navigationOptions: {
-            tabBarLabel: 'Profile',
-            tabBarIcon: tabInfo => {
-                return (
-                    <Ionicons name="ios-person" size={25} color={tabInfo.tintColor}/>
-                );
-            },
-            tabBarColor: Colors.primaryColor
-        }
-    }
+    // Profile: {
+    //     screen: ProfileScreen,
+    //     navigationOptions: {
+    //         tabBarLabel: 'Profile',
+    //         tabBarIcon: tabInfo => {
+    //             return (
+    //                 <Ionicons name="ios-person" size={25} color={tabInfo.tintColor}/>
+    //             );
+    //         },
+    //         tabBarColor: Colors.primaryColor
+    //     }
+    // }
 };
 
 
@@ -124,5 +128,31 @@ const SpinnsSiteNavigator =
             }
         });
 
+const ProfileNavigator = createStackNavigator(
+    {
+        Profile: ProfileScreen
+    },
+    {
+        defaultNavigationOptions: defaultStackNavOptions
+    }
+);
 
-export default createAppContainer(SpinnsSiteNavigator);
+// Main encapsulated navigation stack
+const MainNavigator = createDrawerNavigator({
+    Washes: {
+        screen: SpinnsSiteNavigator,
+        navigationOptions: {
+            drawerLabel: 'Spinns Laundry'
+        }
+    },
+    Profile: ProfileNavigator
+}, {
+    contentOptions: {
+        activeTintColor: Colors.deepPrimaryColor,
+        labelStyle: {
+            fontFamily: 'open-sans-bold'
+        }
+    }
+});
+
+export default createAppContainer(MainNavigator);

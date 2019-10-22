@@ -6,10 +6,11 @@ import {
     StyleSheet,
     TouchableOpacity, Dimensions,
 } from 'react-native';
-
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import {CATEGORIES} from '../../assets/data/app-data';
 import Card from "../widgets/Card";
 import CategoryGridTiles from './CategoryGridTile'
+import HeaderButton from '../HeaderButton';
 
 const CategoriesScreen = props => {
     const renderGridItem = itemData => {
@@ -36,8 +37,21 @@ const CategoriesScreen = props => {
     );
 };
 
-CategoriesScreen.navigationOptions = {
-    headerTitle: 'Wash Categories',
+CategoriesScreen.navigationOptions = navData => {
+    return {
+        headerTitle: 'Wash Categories',
+        headerLeft: (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <Item
+                    title="Menu"
+                    iconName="ios-menu"
+                    onPress={() => {
+                        navData.navigation.toggleDrawer();
+                    }}
+                />
+            </HeaderButtons>
+        )
+    };
 };
 
 const styles = StyleSheet.create({
