@@ -15,16 +15,18 @@ import HeaderButton from '../HeaderButton';
 const CategoriesScreen = props => {
     const renderGridItem = itemData => {
         return <CategoryGridTiles
-            title={itemData.item.title}
-            eta={itemData.item.eta}
-            onSelect={() => {
-            props.navigation.navigate({
-                routeName: 'WashScreen',
-                params: {
-                    categoryId: itemData.item.id
-                }
-            });
-        }}/>;
+                title={itemData.item.title}
+                eta={itemData.item.eta}
+                image={itemData.item.image}
+                onSelect={() => {
+                    props.navigation.navigate({
+                        routeName: 'WashScreen',
+                        params: {
+                            categoryId: itemData.item.id
+                        }
+                    });
+                }}/>;
+
     };
 
     return (
@@ -32,7 +34,6 @@ const CategoriesScreen = props => {
             keyExtractor={(item, index) => item.id}
             data={CATEGORIES}
             renderItem={renderGridItem}
-            numColumns={2}
         />
     );
 };
@@ -67,7 +68,9 @@ const styles = StyleSheet.create({
     cardContainer: {
         height: 150
     },
-
+    container: {
+        marginTop: 20
+    },
     headerTitle: {
             // marginVertical: 10,
         fontFamily: 'open-sans-bold'

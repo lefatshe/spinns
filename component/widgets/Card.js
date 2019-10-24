@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
         elevation: 8,
         backgroundColor: 'white',
         padding: 20,
-        borderRadius: 10
+        flex: 1,
+        // borderRadius: 10
     }
 });
 

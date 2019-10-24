@@ -124,7 +124,7 @@ const SpinnsSiteNavigator =
         })
         : createBottomTabNavigator(tabScreenConfig, {
             tabBarOptions: {
-                activeTintColor: Colors.accentColor
+                activeTintColor: Colors.primaryColor
             }
         });
 

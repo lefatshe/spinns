@@ -2,10 +2,10 @@ import Category from "../../component/models/category";
 import Washes from "../../component/models/washs";
 
 export const CATEGORIES = [
-    new Category('c1', 'Wash', '1 day', '#FFF'),
-    new Category('c2', 'Iron', '2 days', '#FFF'),
-    new Category('c3', 'DryClean', '2 days', '#FFF'),
-    new Category('c4', 'PremiumWash', '2 days', '#FFF')
+    new Category('c1', 'Wash', '1 day', '#FFF', '../../assets/images/c1.jpg'),
+    new Category('c2', 'Iron', '2 days', '#FFF', '../../assets/images/c1.jpg'),
+    new Category('c3', 'DryClean', '2 days', '#FFF', '../../assets/images/c1.jpg'),
+    new Category('c4', 'PremiumWash', '2 days', '#FFF', '../../assets/images/c1.jpg')
 ];
 
 // https://www.popoptiq.com/types-of-clothing/
@@ -16,11 +16,11 @@ export const WASHES = [
     new Washes('w2', '[\'c1\']','Headbands', '0.00', '', 'Headgear'),
     new Washes('w3', '[\'c1\']','Head Tie / Scarves', '0.00', '', 'Headgear'),
     // Tops
-    new Washes('w4', '[\'c1\', \'c2\', \'c4\']','Shirts', '0.00', '', 'Tops'),
-    new Washes('w5', '[\'c1\', \'c2\', \'c4\']','Crop Tops', '0.00', '', 'Tops'),
-    new Washes('w6', '[\'c1\', \'c2\', \'c4\']','Sweaters', '0.00', '', 'Tops'),
-    new Washes('w7', '[\'c1\', \'c2\', \'c4\']','Blouses', '0.00', '', 'Tops'),
-    new Washes('w8', '[\'c1\', \'c2\', \'c4\']','Tube Top', '0.00', '', 'Tops'),
+    new Washes('w4', '[\'c1\']','Shirts', '0.00', '', 'Tops'),
+    new Washes('w5', '[\'c1\']','Crop Tops', '0.00', '', 'Tops'),
+    new Washes('w6', '[\'c1\']','Sweaters', '0.00', '', 'Tops'),
+    new Washes('w7', '[\'c1\']','Blouses', '0.00', '', 'Tops'),
+    new Washes('w8', '[\'c1\']','Tube Top', '0.00', '', 'Tops'),
     // Bottoms
     new Washes('w9', '[\'c1\', \'c2\', \'c4\']','Pants / Trousers', '0.00', '', 'Bottoms'),
     new Washes('w10', '[\'c1\', \'c2\', \'c4\']','Skirts', '0.00', '', 'Bottoms'),
@@ -50,5 +50,5 @@ export const WASHES = [
     new Washes('w30', '[\'c1\', \'c2\', \'c4\']','Slip', '', '', 'Women’s Lingerie'),
     new Washes('w31', '[\'c1\', \'c2\', \'c4\']','Panties/ Underwear', '', '', 'Women’s Lingerie'),
     // Foot wear
-    new Washes('w32', '[\'c1\', \'c2\', \'c4\']','Socks', '', '', 'Footwear'),
+    new Washes('w32', '[\'c1\']','Socks', '', '', 'Footwear'),
 ];

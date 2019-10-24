@@ -1,11 +1,14 @@
-How to use
----------
+// https://facebook.github.io/react-native/docs/image
 
-You can use this attached file in two ways:
+// Sample image - https://raw.githubusercontent.com/AboutReact/sampleresource/master/crystal_background.jpg
 
-1) Compare my code (mostly the .js code but of course you can also compare asset names etc) to yours. This should allow you to fix any errors you're getting whilst following along.
+// export const CATEGORIES = [
+//     new Category('c1', 'Wash', '1 day', '#FFF', '../../assets/images/c1.jpg'),
+//     new Category('c2', 'Iron', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/22/c2.jpg'),
+//     new Category('c3', 'DryClean', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/22/c3.jpg'),
+//     new Category('c4', 'PremiumWash', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/22/c4.jpg')
+// ];
 
-2) Run my code
-For this, you can use my attachments as standalone projects. After extracting, you can navigate into them in your command prompt/ terminal (via the "cd" command) and run
-- npm install
-- npm start
+// https://www.popoptiq.com/types-of-clothing/
+
+
