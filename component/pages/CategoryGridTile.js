@@ -18,7 +18,7 @@ const CategoryGridTiles = props => {
             onPress={props.onSelect}>
             <View style={styles.article}>
                 <Card>
-                    <Image style={styles.stretch} source={require('../../assets/images/dm.jpg')}/>
+                    <Image style={styles.stretch} source={{uri: props.image}} />
                     <View style={styles.countNum}>
                         <Text style={styles.num}> Orders: 0 </Text>
                     </View>

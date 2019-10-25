@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import AppNavigator from "./component/navigation/AppNavigator";
+import ScrollableTabView from "react-native-scrollable-tab-view"
+
 import { useScreens } from 'react-native-screens';
 useScreens();
 

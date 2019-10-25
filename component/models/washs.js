@@ -5,14 +5,17 @@ class Washes {
         title,
         unit,
         imageUrl,
-        type
+        type,
+        minVal,
+        maxVal
     ) {
         this.id = id;
         this.categoryIds = categoryIds;
         this.title = title;
         this.unit = unit;
         this.imageUrl = imageUrl,
-        this.type = type
+        this.minVal = minVal,
+        this.maxVal = maxVal
     }
 }
 
