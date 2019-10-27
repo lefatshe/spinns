@@ -53,6 +53,7 @@ const WashListing = props => {
             />
         </View>
 
+
     </View>;
 };
 

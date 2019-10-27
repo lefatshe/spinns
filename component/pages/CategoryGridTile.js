@@ -11,7 +11,7 @@ import Colors from "../constants/colors";
 import Card from "../widgets/Card";
 
 const CategoryGridTiles = props => {
-    // console.log(props.image);
+    console.log(props);
     return (
         <TouchableOpacity
             style={styles.gridItem}
@@ -20,7 +20,7 @@ const CategoryGridTiles = props => {
                 <Card>
                     <Image style={styles.stretch} source={{uri: props.image}} />
                     <View style={styles.countNum}>
-                        <Text style={styles.num}> Orders: 0 </Text>
+                        <Text style={styles.valCount}> {props.total} </Text>
                     </View>
                     <View>
                         <Text style={styles.title}> {props.title} </Text>
@@ -50,6 +50,11 @@ const styles = StyleSheet.create({
         padding: 20
     },
     sub: {
+        color: Colors.primaryColor
+    },
+    valCount: {
+        padding: 10,
+        fontSize: 28,
         color: Colors.primaryColor
     },
     countNum: {

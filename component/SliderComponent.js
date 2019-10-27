@@ -12,7 +12,12 @@ class SliderComponent extends React.Component {
         value: 0
     };
 
-    itemTotal = [];
+    sliderValueInput = (i) => {
+        let itemTotal = [];
+
+        console.log('you saved value ', i)
+    }
+
 
     render() {
         return (
@@ -36,6 +41,7 @@ class SliderComponent extends React.Component {
                     onSlidingComplete={()=> {
                         console.log(this.value)
                     }}
+                    onSlidingComplete={value => this.sliderValueInput(value)}
                 />
             </View>
         );

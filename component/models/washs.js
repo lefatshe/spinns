@@ -7,7 +7,8 @@ class Washes {
         imageUrl,
         type,
         minVal,
-        maxVal
+        maxVal,
+        total,
     ) {
         this.id = id;
         this.categoryIds = categoryIds;
@@ -15,7 +16,8 @@ class Washes {
         this.unit = unit;
         this.imageUrl = imageUrl,
         this.minVal = minVal,
-        this.maxVal = maxVal
+        this.maxVal = maxVal,
+        this.total = total
     }
 }
 

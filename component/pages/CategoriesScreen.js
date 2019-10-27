@@ -7,17 +7,18 @@ import {
     TouchableOpacity, Dimensions,
 } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import {CATEGORIES} from '../../assets/data/app-data';
+import {CATEGORIES, TYPES, WASHES} from '../../assets/data/app-data';
 import Card from "../widgets/Card";
 import CategoryGridTiles from './CategoryGridTile'
 import HeaderButton from '../HeaderButton';
 
 const CategoriesScreen = props => {
-    const renderGridItem = itemData => {
+    const renderGridItem = (itemData, itemType) => {
         return <CategoryGridTiles
                 title={itemData.item.title}
                 eta={itemData.item.eta}
                 image={itemData.item.image}
+                total={itemData.item.total}
                 onSelect={() => {
                     props.navigation.navigate({
                         routeName: 'WashScreen',

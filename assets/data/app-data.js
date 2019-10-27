@@ -1,11 +1,24 @@
 import Category from "../../component/models/category";
 import Washes from "../../component/models/washs";
+import Types from "../../component/models/washtypes";
 
 export const CATEGORIES = [
-    new Category('c1', 'Wash', '1 day', '#FFF', 'https://imgbbb.com/images/2019/10/25/wash.jpg'),
-    new Category('c2', 'Iron', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/25/iron.jpg'),
-    new Category('c3', 'DryClean', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/25/dry.jpg'),
-    new Category('c4', 'PremiumWash', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/25/primium.jpg')
+    new Category('c1', 'Wash', '1 day', '#FFF', 'https://imgbbb.com/images/2019/10/25/wash.jpg', 0),
+    new Category('c2', 'Iron', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/25/iron.jpg', 0),
+    new Category('c3', 'DryClean', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/25/dry.jpg', 0),
+    new Category('c4', 'PremiumWash', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/25/primium.jpg', 0)
+];
+
+export const TYPES = [
+    new Types('t1', 'Headgear', '0', 0),
+    new Types('t2', 'Tops', '0', 0),
+    new Types('t3', 'Full Body Wear', '0', 0),
+    new Types('t4', 'Outerwear', '0', 0),
+    new Types('t5', 'Men’s Undergarments', '0', 0),
+    new Types('t6', 'Women’s Lingerie', '0', 0),
+    new Types('t7', 'Full Body Wear', '0', 0),
+    new Types('t8', 'Foot wear', '0', 0),
+
 ];
 
 // https://www.popoptiq.com/types-of-clothing/
