@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     FlatList,
     StyleSheet,
@@ -7,6 +7,7 @@ import {
     Dimensions,
     TouchableOpacity
 } from 'react-native';
+import Colors from "../../constants/colors";
 
 export default class MetroTabs extends Component {
     WINDOW_WIDTH = Dimensions.get('window').width;
@@ -19,7 +20,7 @@ export default class MetroTabs extends Component {
     render() {
         console.log(this.props.screens);
         return (
-            <View style={{ paddingTop: 120, backgroundColor: 'black' }}>
+            <View style={{paddingTop: 50, backgroundColor: Colors.deepPrimaryColor}}>
                 <FlatList
                     ref={screenList => (this.screenList = screenList)}
                     horizontal
@@ -29,7 +30,7 @@ export default class MetroTabs extends Component {
                     data={this.props.screens}
                     onScroll={this.handleScroll}
                     showsHorizontalScrollIndicator={false}
-                    renderItem={({ item }) => (
+                    renderItem={({item}) => (
                         <View style={styles.container}>{item.screen}</View>
                     )}
                     onViewableItemsChanged={this.onViewableItemsChanged}
@@ -37,7 +38,7 @@ export default class MetroTabs extends Component {
                 <FlatList
                     extraData={this.state}
                     ref={headerList => (this.headerList = headerList)}
-                    style={{ position: 'absolute', top: 0, right: 0 }}
+                    style={{position: 'absolute', top: 0, right: 0}}
                     horizontal
                     snapToAlignment={'center'}
                     decelerationRate={10}
@@ -45,22 +46,17 @@ export default class MetroTabs extends Component {
                     data={this.props.screens}
                     scrollEnabled={false}
                     showsHorizontalScrollIndicator={false}
-                    renderItem={({ item }) => (
+                    renderItem={({item}) => (
                         <TouchableOpacity
                             // activeOpacity={1}
-                            onPress={() => this.headerPress(item)}
-                        >
-                            <Text
-                                style={{
+                            onPress={() => this.headerPress(item)}>
+                            <Text numberOfLines={1} style={{
                                     color: 'white',
                                     padding: 10,
                                     width: this.HEADER_WIDTH,
-                                    marginTop: 20,
-                                    fontSize: 50,
+                                    fontSize: 22,
                                     opacity: this.state.currentPage === item.key ? 1 : 0.4
-                                }}
-                            >
-                                {item.title}
+                                }}>{item.title}
                             </Text>
                         </TouchableOpacity>
                     )}
@@ -71,7 +67,7 @@ export default class MetroTabs extends Component {
 
     handleScroll = ({
                         nativeEvent: {
-                            contentOffset: { x }
+                            contentOffset: {x}
                         }
                     }) => {
         try {
@@ -86,14 +82,14 @@ export default class MetroTabs extends Component {
 
     onViewableItemsChanged = info => {
         if (info.viewableItems.length === 1) {
-            this.setState({ currentPage: info.viewableItems[0].key });
+            this.setState({currentPage: info.viewableItems[0].key});
             console.log('scrolling to ', info.viewableItems[0].index);
         }
     };
 
     headerPress = item => {
-        this.setState({ currentPage: item.key });
-        this.screenList.scrollToItem({ item: { key: item } });
+        this.setState({currentPage: item.key});
+        this.screenList.scrollToItem({item: {key: item}});
     };
 }
 

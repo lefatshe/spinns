@@ -6,55 +6,38 @@ import {
 } from 'react-native';
 import WashItem from "./WashItemList";
 import Card from "../widgets/Card";
-
+import WashType from "../WashType";
+import MetroTabs from "./tabs/MetroTab";
+import CategoryTypes from "./tabs/CategoryTypes";
+import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
+import Headgear from "./types/headgear";
+import {WASHES} from "../../assets/data/app-data";
+import Tops from "./types/tops";
+import WashTypes from "./types/washtype";
 
 const WashListing = props => {
 
-    const renderWashItem = itemData => {
-        return (
-            <WashItem
-                title={itemData.item.title}
-                image={itemData.item.image}
-                price={itemData.item.type}
-                value={0}
+    const catId = props.navigation.getParam('categoryId');
 
-                // onSelectWash={() => {
-                //     props.navigation.navigate({
-                //         routeName: 'WashDetail',
-                //         params: {
-                //             washId: itemData.item.id
-                //         }
-                //     });
-                // }}
+    const typeHeadgear = WASHES.filter(wash => wash.unit === 'Headgear' && wash.categoryIds.indexOf(catId) >= 0 );
+    const typeTops = WASHES.filter(wash => wash.unit === 'Tops' && wash.categoryIds.indexOf(catId) >= 0 );
+    const typeFullBodyWear = WASHES.filter(wash => wash.unit === 'Full Body Wear' && wash.categoryIds.indexOf(catId) >= 0 );
+    const typeOuterwear = WASHES.filter(wash => wash.unit === 'Outerwear' && wash.categoryIds.indexOf(catId) >= 0 );
+    const typeWomenLingerie = WASHES.filter(wash => wash.unit === 'Women’s Lingerie' && wash.categoryIds.indexOf(catId) >= 0 );
+    const typeFootwear = WASHES.filter(wash => wash.unit === 'Foot wear' && wash.categoryIds.indexOf(catId) >= 0 );
+    const typeMenUndergarments = WASHES.filter(wash => wash.unit === 'Men’s Undergarments' && wash.categoryIds.indexOf(catId) >= 0 );
+
+    return<MetroTabs
+                screens={[
+                    { key: 't1', title: 'Headgear', screen: <WashTypes listData={typeHeadgear} /> },
+                    { key: 't2', title: 'Tops', screen: <WashTypes listData={typeTops} /> },
+                    { key: 't3', title: 'Full Body Wear', screen: <WashTypes listData={typeFullBodyWear} /> },
+                    { key: 't4', title: 'Outerwear', screen: <WashTypes listData={typeOuterwear} /> },
+                    { key: 't5', title: 'Women’s Lingerie', screen: <WashTypes listData={typeWomenLingerie} /> },
+                    { key: 't6', title: 'Foot wear', screen: <WashTypes listData={typeFootwear} /> },
+                    { key: 't7', title: 'Men’s Undergarments', screen: <WashTypes listData={typeMenUndergarments} /> },
+                ]}
             />
-        );
-    };
-
-
-    return <View style={styles.list}>
-        <View style={styles.select}>
-            <Picker style={{height: 120, width: 200}}>
-                <Picker.Item label="All" value="All" />
-                <Picker.Item label="Headgear" value="Headgear" />
-                <Picker.Item label="Tops" value="Tops" />
-                <Picker.Item label="Bottoms" value="Bottoms" />
-                <Picker.Item label="Full Body Wear" value="Full Body Wear" />
-                <Picker.Item label="Outerwear" value="Outerwear" />
-                <Picker.Item label="Men’s Undergarments" value="Men’s Undergarments" />
-                <Picker.Item label="Women’s Lingerie" value="Women’s Lingerie" />
-                <Picker.Item label="Foot wear" value="Foot wear" />
-            </Picker>
-        </View>
-        <View style={{width: '100%'}}>
-            <FlatList
-                data={props.listData}
-                keyExtractor={(item, index) => item.id}
-                renderItem={renderWashItem}
-            />
-        </View>
-
-
-    </View>;
 };
 
 const styles = StyleSheet.create({

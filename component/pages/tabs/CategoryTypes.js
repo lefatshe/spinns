@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, FlatList, Image} from 'react-native';
+import ScrollableTabView, {ScrollableTabBar,} from 'react-native-scrollable-tab-view';
 
 const sampleStoreData = [
     {
@@ -39,48 +40,16 @@ export default class CategoryTypes extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <FlatList
-                    data={sampleStoreData}
-                    renderItem={({item}) => (
-                        <View style={{
-                                flexDirection: 'row',
-                                marginStart: 10,
-                                marginBottom: 10
-                            }}>
-                            <Image
-                                source={{uri: item.icon}}
-                                style={{height: 100, width: 100}}
-                            />
-                            <View style={{marginStart: 10}}>
-                                <Text
-                                    style={{color: 'white', fontSize: 25, fontWeight: '300'}}
-                                >
-                                    {item.title}
-                                </Text>
-                                <Text
-                                    style={{
-                                        color: 'white',
-                                        fontSize: 13,
-                                        fontWeight: '300',
-                                        marginTop: 3
-                                    }}
-                                >
-                                    {item.developer}
-                                </Text>
-                                <Text
-                                    style={{
-                                        color: 'white',
-                                        fontSize: 13,
-                                        fontWeight: '300',
-                                        marginTop: 3
-                                    }}
-                                >
-                                    {item.cost ? `$${item.cost}` : 'free'}
-                                </Text>
-                            </View>
+                <FlatList data={sampleStoreData} renderItem={({item}) => (
+                    <View style={{flexDirection: 'row', marginStart: 10, marginBottom: 1}}>
+                        <Image source={{uri: item.icon}} style={{height: 100, width: 100}}/>
+                        <View style={{marginStart: 10}}>
+                            <Text style={{color: 'white', fontSize: 25, fontWeight: '300'}}>{item.title}</Text>
+                            <Text style={{color: 'white', fontSize: 13, fontWeight: '300', marginTop: 3}}>{item.developer}</Text>
+                            <Text style={{color: 'white', fontSize: 13, fontWeight: '300', marginTop: 3}}>{item.cost ? `$${item.cost}` : 'free'}</Text>
                         </View>
-                    )}
-                />
+                    </View>
+                )}/>
             </View>
         );
     }
