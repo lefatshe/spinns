@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
+import {AppLoading} from 'expo';
 import AppNavigator from "./component/navigation/AppNavigator";
-import ScrollableTabView from "react-native-scrollable-tab-view"
+import {createStore, combineReducers} from 'redux'
+import {useScreens} from 'react-native-screens';
 
-import { useScreens } from 'react-native-screens';
+import washesReducer from './assets/store/reducers/washes'
+import {Provider} from 'react-redux'
+
 useScreens();
 
+const rootReducer = combineReducers({
+    washes: washesReducer
+});
+
+const store = createStore(rootReducer);
 const fetchFonts = () => {
     return Font.loadAsync({
         'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
@@ -28,12 +36,16 @@ export default function App() {
         );
     }
 
-  return <AppNavigator />;
+    return (
+        <Provider store={store}>
+            <AppNavigator />
+        </Provider>
+    );
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1
-  },
+    screen: {
+        flex: 1
+    },
 });
 

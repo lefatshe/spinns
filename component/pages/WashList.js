@@ -19,23 +19,23 @@ const WashListing = props => {
 
     const catId = props.navigation.getParam('categoryId');
 
-    const typeHeadgear = WASHES.filter(wash => wash.unit === 'Headgear' && wash.categoryIds.indexOf(catId) >= 0 );
-    const typeTops = WASHES.filter(wash => wash.unit === 'Tops' && wash.categoryIds.indexOf(catId) >= 0 );
-    const typeFullBodyWear = WASHES.filter(wash => wash.unit === 'Full Body Wear' && wash.categoryIds.indexOf(catId) >= 0 );
-    const typeOuterwear = WASHES.filter(wash => wash.unit === 'Outerwear' && wash.categoryIds.indexOf(catId) >= 0 );
-    const typeWomenLingerie = WASHES.filter(wash => wash.unit === 'Women’s Lingerie' && wash.categoryIds.indexOf(catId) >= 0 );
-    const typeFootwear = WASHES.filter(wash => wash.unit === 'Foot wear' && wash.categoryIds.indexOf(catId) >= 0 );
-    const typeMenUndergarments = WASHES.filter(wash => wash.unit === 'Men’s Undergarments' && wash.categoryIds.indexOf(catId) >= 0 );
+    const _typeHeadgear = WASHES.filter(wash => wash.unit === 'Headgear' && wash.categoryIds.indexOf(catId) >= 0 );
+    const _typeTops = WASHES.filter(wash => wash.unit === 'Tops' && wash.categoryIds.indexOf(catId) >= 0 );
+    const _typeFullBodyWear = WASHES.filter(wash => wash.unit === 'Full Body Wear' && wash.categoryIds.indexOf(catId) >= 0 );
+    const _typeOuterwear = WASHES.filter(wash => wash.unit === 'Outerwear' && wash.categoryIds.indexOf(catId) >= 0 );
+    const _typeWomenLingerie = WASHES.filter(wash => wash.unit === 'Women’s Lingerie' && wash.categoryIds.indexOf(catId) >= 0 );
+    const _typeFootwear = WASHES.filter(wash => wash.unit === 'Foot wear' && wash.categoryIds.indexOf(catId) >= 0 );
+    const _typeMenUndergarments = WASHES.filter(wash => wash.unit === 'Men’s Undergarments' && wash.categoryIds.indexOf(catId) >= 0 );
 
     return<MetroTabs
                 screens={[
-                    { key: 't1', title: 'Headgear', screen: <WashTypes listData={typeHeadgear} /> },
-                    { key: 't2', title: 'Tops', screen: <WashTypes listData={typeTops} /> },
-                    { key: 't3', title: 'Full Body Wear', screen: <WashTypes listData={typeFullBodyWear} /> },
-                    { key: 't4', title: 'Outerwear', screen: <WashTypes listData={typeOuterwear} /> },
-                    { key: 't5', title: 'Women’s Lingerie', screen: <WashTypes listData={typeWomenLingerie} /> },
-                    { key: 't6', title: 'Foot wear', screen: <WashTypes listData={typeFootwear} /> },
-                    { key: 't7', title: 'Men’s Undergarments', screen: <WashTypes listData={typeMenUndergarments} /> },
+                    { key: 't1', title: 'Headgear', screen: <WashTypes listData={_typeHeadgear} /> },
+                    { key: 't2', title: 'Tops', screen: <WashTypes listData={_typeTops} /> },
+                    { key: 't3', title: 'Full Body Wear', screen: <WashTypes listData={_typeFullBodyWear} /> },
+                    { key: 't4', title: 'Outerwear', screen: <WashTypes listData={_typeOuterwear} /> },
+                    { key: 't5', title: 'Women’s Lingerie', screen: <WashTypes listData={_typeWomenLingerie} /> },
+                    { key: 't6', title: 'Foot wear', screen: <WashTypes listData={_typeFootwear} /> },
+                    { key: 't7', title: 'Men’s Undergarments', screen: <WashTypes listData={_typeMenUndergarments} /> },
                 ]}
             />
 };

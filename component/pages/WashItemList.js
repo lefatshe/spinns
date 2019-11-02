@@ -4,6 +4,8 @@ import Card from "../widgets/Card";
 import Slider from "react-native-slider";
 import Colors from "../constants/colors";
 import SliderComponent from "../SliderComponent";
+import {Item} from "react-navigation-header-buttons";
+import {Ionicons} from '@expo/vector-icons';
 
 // https://github.com/react-native-community/react-native-slider
 // https://snack.expo.io/@ptomasroos/react-native-scrollable-tab-view-examples
@@ -15,11 +17,9 @@ const WashItem = props => {
                 {props.title}
             </Text>
 
-            {/*<View style={styles.countNum}>*/}
-            {/*    <Text style={styles.num}>*/}
-            {/*        {props.state}*/}
-            {/*    </Text>*/}
-            {/*</View>*/}
+            <Text>
+                <Icon name="ios-star" size={20} color="#f2ba13" />
+            </Text>
 
             <View style={styles.slide}>
                 <SliderComponent />

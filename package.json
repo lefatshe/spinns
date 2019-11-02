@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "latest",
+    "create-react-class": "latest",
     "expo": "^33.0.0",
     "expo-font": "~5.0.1",
     "react": "16.8.3",
@@ -24,8 +25,9 @@
     "react-navigation": "^3.11.1",
     "react-navigation-header-buttons": "^3.0.1",
     "react-navigation-material-bottom-tabs": "^1.0.0",
+    "react-redux": "^7.1.1",
     "react-scroll-horizontal": "^1.6.2",
-    "create-react-class": "latest"
+    "redux": "^4.0.4"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.1.1",

@@ -4,19 +4,14 @@ import {
     View,
     StyleSheet
 } from 'react-native';
-import {WASHES} from "../../../assets/data/app-data";
 import WashItem from "../WashItemList";
 
 const WashTypes = props => {
 
     const renderWashItem = itemData => {
-        return (
-            <WashItem
-                title={itemData.item.title}
-                image={itemData.item.image}
-            />
-        );
+        return (<WashItem title={itemData.item.title} image={itemData.item.image}/>);
     };
+
     return <View style={{width: '100%'}}>
         <FlatList
             data={props.listData}
