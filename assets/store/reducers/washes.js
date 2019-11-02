@@ -1,4 +1,4 @@
-import {WASHES} from "../../../assets/data/app-data";
+import {WASHES} from "../../../app/data/app-data";
 
 const initialState = {
     washes: WASHES,

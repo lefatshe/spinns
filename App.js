@@ -1,21 +1,11 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState, Component} from 'react';
 import * as Font from 'expo-font';
 import {AppLoading} from 'expo';
-import AppNavigator from "./component/navigation/AppNavigator";
-import {createStore, combineReducers} from 'redux'
+import {Text, View} from 'react-native';
 import {useScreens} from 'react-native-screens';
-
-import washesReducer from './assets/store/reducers/washes'
-import {Provider} from 'react-redux'
+import OrderNavigator from "./app/navigation/AppNav";
 
 useScreens();
-
-const rootReducer = combineReducers({
-    washes: washesReducer
-});
-
-const store = createStore(rootReducer);
 const fetchFonts = () => {
     return Font.loadAsync({
         'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
@@ -24,6 +14,7 @@ const fetchFonts = () => {
 };
 
 export default function App() {
+
     const [dataLoaded, setDataLoaded] = useState(false);
 
     if (!dataLoaded) {
@@ -37,15 +28,6 @@ export default function App() {
     }
 
     return (
-        <Provider store={store}>
-            <AppNavigator />
-        </Provider>
+        <OrderNavigator />
     );
 }
-
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1
-    },
-});
-
