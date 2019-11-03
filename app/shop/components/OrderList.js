@@ -13,6 +13,11 @@ const OrderList = props => {
     const WINDOW_WIDTH = Dimensions.get('window').width;
     const HEADER_WIDTH = WINDOW_WIDTH / 1.5;
 
+    state = {
+        colors:['green', 'blue', 'yellow', 'red'],
+        buttonColor: 'blue'
+    };
+
     return (
         <Container>
             <View>
@@ -24,8 +29,10 @@ const OrderList = props => {
                     data={props.keys}
                     renderItem={({item}) => <TouchableOpacity
                         activeOpacity={1}
-                        onPress={() => console.log(props.keys)}>
-                        <TitleText style={styles.item}> {item} </TitleText>
+                        onPress={() => {
+                            console.log(item)
+                        }}>
+                        <TitleText style={{backgroundColor: this.state.buttonColor, padding: 15}}> {item} </TitleText>
                     </TouchableOpacity>}
                     keyExtractor={(item, index) => item}
                 />
