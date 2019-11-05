@@ -1,8 +1,9 @@
 class Order {
-    constructor(id, label, keys ) {
+    constructor(id, title, keys, thumbnailUrl ) {
         this.id = id;
-        this.label = label;
-        this.keys = keys
+        this.title = title;
+        this.keys = keys;
+        this.thumbnailUrl = thumbnailUrl
     }
 }
 

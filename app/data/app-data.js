@@ -4,11 +4,11 @@ import Types from "../models/washtypes";
 import Order from "../models/order";
 
 export const ORDERS = [
-    new Order("o1", 'What day', ['Today - 5 Sep', 'Tomorrow - 6 Sep', 'Friday - 8 Sep']),
-    new Order("o2", 'What time', ['10:30 AM', '11:45 AM', '16:22 PM']),
-    new Order("o3", 'Delivery day', ['1 - Day', '2 - Day', '3 - Day']),
-    new Order("o4", 'Detergent', ['Any', 'Tide', 'Surf']),
-    new Order("o5", 'Services by', [ 'Spinns' ]),
+    new Order("o1", 'What day', ['Today - 5 Sep', 'Tomorrow - 6 Sep', 'Friday - 8 Sep'], 'https://via.placeholder.com/150/92c952'),
+    new Order("o2", 'What time', ['10:30 AM', '11:45 AM', '16:22 PM'], 'https://via.placeholder.com/150/92c952'),
+    new Order("o3", 'Delivery day', ['1 - Day', '2 - Day', '3 - Day'], 'https://via.placeholder.com/150/92c952'),
+    new Order("o4", 'Detergent', ['Any', 'Tide', 'Surf'], 'https://via.placeholder.com/150/92c952'),
+    new Order("o5", 'Services by', [ 'Spinns' ], 'https://via.placeholder.com/150/92c952'),
 ];
 
 export const CATEGORIES = [
