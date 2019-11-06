@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList, Text, View, Button, ScrollView, StyleSheet} from 'react-native';
 import {ORDERS} from "../../data/app-data";
 import Container from "../../widgets/Container";
@@ -16,14 +16,18 @@ const OrdersScreen = props => {
         const renderItem = (data, arr, selectedClass) => {
             isSelect = arr[0] === data.item;
             selectedClass = isSelect ? styles.selected : styles.list;
-            return <Text style={[styles.list, selectedClass]}> {data.item} </Text>
+            return <Text style={[styles.list, selectedClass]} onPress={(item) => { console.log(data.item)}}> {data.item} </Text>
+            // let update = (item, arr) => {
+            //     isSelect = arr.filter( val => val.indexOf(item) >= 0 );
+            //     selectedClass = isSelect ? styles.selected : styles.list;
+            //     console.log('Selected', isSelect.toString())
+            // }
         };
 
         return (
             <View>
                 <TitleText> {itemData.item.title} </TitleText>
-
-                <View>
+                <View style={styles.overlay}>
                     <FlatList keyExtractor={item => item.toString()}
                               extraData={itemData.item}
                               data={itemData.item.keys}
@@ -47,18 +51,23 @@ const OrdersScreen = props => {
 
 OrdersScreen.navigationOptions = navData => {
     return {
-        headerTitle: 'Your Order'
+        headerTitle: 'Order'
     };
 };
 
 const styles = StyleSheet.create({
     list: {
-        padding: 7
+        padding: 5,
+        borderRadius: 4
+    },
+    overlay: {
+        padding: 5,
+        backgroundColor: Colors.settleGray,
     },
     selected: {
         borderRadius: 4,
-        borderWidth: 0.5,
-        borderColor: Colors.sameBlue,
+        color: 'white',
+        backgroundColor: Colors.sameBlue,
     }
 });
 
