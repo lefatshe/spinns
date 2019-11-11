@@ -1,10 +1,8 @@
 import React, {useState, Component} from 'react';
 import * as Font from 'expo-font';
 import {AppLoading} from 'expo';
-import {Text, View} from 'react-native';
 import {useScreens} from 'react-native-screens';
 import OrderNavigator from "./app/navigation/AppNav";
-<script src="http://localhost:8097"></script>
 
 useScreens();
 const fetchFonts = () => {

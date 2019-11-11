@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
 const Footer = props => {
     return (
         <View>
-            <View style={styles.footer}>{props.children}</View>
+            <Text style={styles.footer}>{props.children}</Text>
         </View>
 
     );
@@ -14,9 +14,8 @@ const styles = StyleSheet.create({
     footer: {
         flex: 1,
         marginTop: 20,
-        marginBottom: 20
+        marginBottom: 60
     }
-
 });
 
 export default Footer;

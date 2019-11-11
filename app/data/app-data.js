@@ -2,6 +2,20 @@ import Category from "../models/category";
 import Washes from "../models/washs";
 import Types from "../models/washtypes";
 import Order from "../models/order";
+import User from "../models/user";
+import Menu from "../models/menu";
+
+export const MENU = [
+    new Menu("m1", 'Preference'),
+    new Menu("m2", 'Payments'),
+    new Menu("m3", 'Free wash'),
+    new Menu("m4", 'Help'),
+    new Menu("m5", 'Legal'),
+];
+
+export const USER = [
+    new User("o1", 'John Wick', '89 Wolfstock street, Welcriem, RSA ')
+];
 
 export const ORDERS = [
     new Order("o1", 'What day', ['Today - 5 Sep', 'Tomorrow - 6 Sep', 'Friday - 8 Sep'], 'https://via.placeholder.com/150/92c952'),
