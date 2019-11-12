@@ -21,8 +21,8 @@ const WashItems = props => {
     return <ScrollTabs
         screens={[
             { key: 't1', title: 'Headgear', screen: <WashType listData={_typeHeadgear} /> },
-            { key: 't2', title: 'Tops', screen: <WashType listData={_typeTops} /> },
-            { key: 't3', title: 'Full Body Wear', screen: <WashType listData={_typeFullBodyWear} /> },
+            // { key: 't2', title: 'Tops', screen: <WashType listData={_typeTops} /> },
+            // { key: 't3', title: 'Full Body Wear', screen: <WashType listData={_typeFullBodyWear} /> },
         ]}
     />
 };

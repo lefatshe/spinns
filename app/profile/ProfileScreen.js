@@ -5,6 +5,7 @@ import HeaderButton from '../widgets/HeaderButton';
 import {USER, MENU} from "../data/app-data";
 import Container from "../widgets/Container";
 import TitleText from "../widgets/TitleText";
+import Card from "../widgets/Card";
 
 const ProfileScreen = props => {
 
@@ -16,9 +17,9 @@ const ProfileScreen = props => {
     };
 
     const renderMenu = (itemData) => {
-        return <View>
+        return <Card>
             <Text>{itemData.item.title}</Text>
-        </View>;
+        </Card>;
     };
 
     return (

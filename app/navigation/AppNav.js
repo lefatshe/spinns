@@ -19,17 +19,26 @@ const defaultStackNavOptions = {
     headerStyle: {
         backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
     },
-    headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
-    headerTitle: ''
+    headerTitleStyle: {
+        // fontFamily: 'open-sans-bold'
+    },
+    headerBackTitleStyle: {
+        // fontFamily: 'open-sans'
+    },
+    headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primary
 };
-const OrderNavigator = createStackNavigator({
+const WashesNavigator = createStackNavigator({
     CategoryScreen: CategoryScreen,
     WashScreen: WashScreen
 });
 
+const OrdersNavigator = createStackNavigator({
+    OrderScreen: OrderScreen
+});
+
 const tabScreenConfig = {
     Washes: {
-        screen: OrderNavigator,
+        screen: WashesNavigator,
         navigationOptions: {
             tabBarIcon: tabInfo => {
                 return (
@@ -40,12 +49,12 @@ const tabScreenConfig = {
         }
     },
     Orders: {
-        screen: OrderScreen,
+        screen: OrdersNavigator,
         navigationOptions: {
             tabBarLabel: 'Order',
             tabBarIcon: tabInfo => {
                 return (
-                    <Ionicons name="ios-calendar" size={25} color={tabInfo.tintColor}/>
+                    <Ionicons name="ios-basket" size={25} color={tabInfo.tintColor}/>
                 );
             },
             tabBarColor: Colors.primaryColor

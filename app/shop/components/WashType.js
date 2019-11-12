@@ -20,10 +20,7 @@ const WashType = props => {
             data={props.listData}
             keyExtractor={(item, index) => item.id}
             renderItem={renderWashItem}/>
-        <Card>
-            <Text> Total </Text>
-            <Button title="Add Basket"  />
-        </Card>
+            <Button title="Clear basket"  />
     </Container>;
 };
 

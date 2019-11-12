@@ -3,6 +3,20 @@ import * as Font from 'expo-font';
 import {AppLoading} from 'expo';
 import {useScreens} from 'react-native-screens';
 import OrderNavigator from "./app/navigation/AppNav";
+import {createStore, combineReducers} from 'redux';
+import {Provider} from 'react-redux'
+import {composeWithDevTools} from 'redux-devtools-extension'
+
+import washersReducers from "./app/store/reducers/washes";
+import cartReducers from "./app/store/reducers/cart";
+
+const rootReducer = combineReducers({
+    washes: washersReducers,
+    cart: cartReducers,
+    // orders: ordersReducer
+});
+
+const store = createStore(rootReducer, composeWithDevTools());
 
 useScreens();
 const fetchFonts = () => {
@@ -27,7 +41,9 @@ export default function App() {
     }
 
     return (
-        <OrderNavigator />
+        <Provider store={store}>
+            <OrderNavigator/>
+        </Provider>
     );
 }
 

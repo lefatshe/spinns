@@ -2,20 +2,26 @@ import React from "react";
 import Slider from "react-native-slider";
 import {StyleSheet, View, Text} from "react-native";
 import Colors from '../../theme/constants/Colors'
+import Menu from "../../models/menu";
+import Cart from "../../data/user-data";
+import * as cartActions from '../../store/actions/cart'
+import Product from "../../models/product";
 
 class SliderComponent extends React.Component {
+
     state = {
-        value: 0
+        value: 0,
+        itemTotal: []
     };
 
-    sliderValueInput = (i) => {
-        let itemTotal = [];
-
-        console.log('you saved value ', i)
+    sliderValueInput = (quantity) => {
+        let itemSelected = new Cart(quantity, this.props.itemName);
+        this.state.itemTotal.push(itemSelected);
+        console.log(this.state.itemTotal)
     }
 
-
     render() {
+        console.log(this.props.dispatch);
         return (
             <View style={styles.container}>
                 <Text style={styles.valCount}>
@@ -34,10 +40,8 @@ class SliderComponent extends React.Component {
                     thumbTintColor="#293064"
                     step={1}
                     onValueChange={value => this.setState({value})}
-                    onSlidingComplete={() => {
-                        console.log(this.value)
-                    }}
-                    onSlidingComplete={value => this.sliderValueInput(value)}
+                    onSlidingComplete={() => this.props.dispatch(cartActions.addToCart(new Product(this.props.itemId, this.props.itemName, 29.99)))}
+                    // onSlidingComplete={value => this.sliderValueInput(value)}
                 />
             </View>
         );

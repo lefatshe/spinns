@@ -1,18 +1,18 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import Colors from "../../theme/constants/Colors";
 import SliderComponent from "../components/Slider";
-import Container from "../../widgets/Container";
+import Cart from "../../data/user-data";
+import {useSelector, useDispatch} from 'react-redux'
 
 const WashList = props => {
-
+    const dispatch = useDispatch();
     return (
         <View>
             <Text style={styles.title} numberOfLines={1}>
                 {props.title}
             </Text>
             <View>
-                <SliderComponent/>
+                <SliderComponent itemName={props.title}  itemId={props.id} dispatch={dispatch} />
             </View>
         </View>
     );
