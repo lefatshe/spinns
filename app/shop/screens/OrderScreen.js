@@ -6,6 +6,7 @@ import CartItem from "../components/Cartitem";
 import HeaderButton from "../../widgets/HeaderButton";
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import Container from "../../widgets/Container";
+import * as cartActions from '../../store/actions/cart';
 
 const OrderScreen = props => {
 
@@ -47,10 +48,10 @@ const OrderScreen = props => {
                             quantity={itemData.item.quantity}
                             total={itemData.item.total}
                             categoryTitle={itemData.item.categoryTitle}
-                            // deletable
-                            // onRemove={() => {
-                            //     dispatch(cartActions.removeFromCart(itemData.item.productId));
-                            // }}
+                            deletable
+                            onRemove={() => {
+                                dispatch(cartActions.removeFromCart(itemData.item.id));
+                            }}
                         />
                     )}
                 />

@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     Platform
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import {Ionicons} from '@expo/vector-icons';
 import Card from "../../widgets/Card";
 import Colors from "../../theme/constants/Colors";
 import TitleText from "../../widgets/TitleText";
@@ -23,12 +23,10 @@ const CartItem = props => {
                 <View style={styles.totalItem}>
                     <View style={styles.itemData}>
                         <Text style={styles.mainText}> {props.categoryTitle} </Text>
-                        <TouchableOpacity style={styles.deleteButton}>
-                            <Ionicons
-                                name={Platform.OS === 'android' ? 'md-trash' : 'ios-trash'}
-                                size={23}
-                                color="red"
-                            />
+                        <TouchableOpacity style={styles.deleteButton} onPress={props.onRemove}>
+                            <Ionicons name={Platform.OS === 'android' ? 'md-trash' : 'ios-trash'}
+                                      size={23}
+                                      color="red"/>
                         </TouchableOpacity>
                     </View>
                 </View>
