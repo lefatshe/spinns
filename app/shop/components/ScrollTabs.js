@@ -22,7 +22,7 @@ export default class ScrollTabs extends Component {
     render() {
         // console.log(this.props.screens);
         return (
-            <View style={{paddingTop: 50}}>
+            <View style={{paddingTop: 50, paddingBottom: 50}}>
                 <ScrollView>
                     <FlatList
                         ref={screenList => (this.screenList = screenList)}
@@ -34,7 +34,9 @@ export default class ScrollTabs extends Component {
                         onScroll={this.handleScroll}
                         showsHorizontalScrollIndicator={false}
                         renderItem={({item}) => (
-                            <View style={styles.container}>{item.screen}</View>
+                            <View style={styles.container}>
+                                {item.screen}
+                            </View>
                         )}
                         onViewableItemsChanged={this.onViewableItemsChanged}/>
                 </ScrollView>
@@ -54,7 +56,9 @@ export default class ScrollTabs extends Component {
                             // activeOpacity={1}
                             onPress={() => this.headerPress(item)}>
                             <TitleText numberOfLines={1} style={{
-                                padding: 10,
+                                backgroundColor: Colors.sameBlue,
+                                color: 'white',
+                                padding: 20,
                                 width: this.HEADER_WIDTH,
                                 opacity: this.state.currentPage === item.key ? 1 : 0.4
                             }}>{item.title}</TitleText>
@@ -76,14 +80,14 @@ export default class ScrollTabs extends Component {
                 animated: false
             });
         } catch (e) {
-            console.log(e);
+            // console.log(e);
         }
     };
 
     onViewableItemsChanged = info => {
         if (info.viewableItems.length === 1) {
             this.setState({currentPage: info.viewableItems[0].key});
-            console.log('scrolling to ', info.viewableItems[0].index);
+            // console.log('scrolling to ', info.viewableItems[0].index);
         }
     };
 
@@ -96,6 +100,6 @@ export default class ScrollTabs extends Component {
 const styles = StyleSheet.create({
     container: {
         height: Dimensions.get('window').height,
-        width: Dimensions.get('window').width
+        width: Dimensions.get('window').width,
     }
 });

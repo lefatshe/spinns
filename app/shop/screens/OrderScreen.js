@@ -1,10 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button, FlatList} from 'react-native';
-import {useSelector} from 'react-redux';
+import {SafeAreaView, View, FlatList, StyleSheet, Text, Button, Platform} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
 import Colors from "../../theme/constants/Colors"
 import CartItem from "../components/Cartitem";
 import HeaderButton from "../../widgets/HeaderButton";
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
+import Container from "../../widgets/Container";
 
 const OrderScreen = props => {
 
@@ -12,34 +13,50 @@ const OrderScreen = props => {
 
     const cartItems = useSelector(state => {
         const transformedCartItems = [];
+
         for (const key in state.cart.items) {
             transformedCartItems.push({
-                productId: key,
-                productTitle: state.cart.items[key].productTitle,
-                productPrice: state.cart.items[key].productPrice,
-                sum: state.cart.items[key].sum
-            })
+                id: key,
+                title: state.cart.items[key].title,
+                price: state.cart.items[key].price,
+                quantity: state.cart.items[key].quantity,
+                total: state.cart.items[key].total,
+                categoryTitle: state.cart.items[key].categoryTitle,
+            });
         }
-        return transformedCartItems;
-        return
+        return transformedCartItems.sort((a, b) =>
+            a.id > b.id ? 1 : -1
+        );
     });
+    const dispatch = useDispatch();
+    console.log(cartItems)
 
     return (
         <View style={styles.container}>
 
-            <FlatList
-                data={cartItems}
-                keyExtractor={item => item.productId}
-                renderItem={itemData => (
-                    <CartItem
-                        quantity={itemData.item.quantity}
-                        title={itemData.item.productTitle}
-                        amount={itemData.item.sum}
-                        onRemove={() => {
-                        }}
-                    />
-                )}
-            />
+            <Container>
+
+                <FlatList
+                    data={cartItems}
+                    keyExtractor={item => item.id}
+                    renderItem={itemData => (
+                        <CartItem
+                            id={itemData.item.id}
+                            title={itemData.item.title}
+                            price={itemData.item.price}
+                            quantity={itemData.item.quantity}
+                            total={itemData.item.total}
+                            categoryTitle={itemData.item.categoryTitle}
+                            // deletable
+                            // onRemove={() => {
+                            //     dispatch(cartActions.removeFromCart(itemData.item.productId));
+                            // }}
+                        />
+                    )}
+                />
+
+            </Container>
+
 
             <View style={styles.bottom}>
                 <View style={styles.button}>
@@ -72,7 +89,16 @@ OrderScreen.navigationOptions = navData => {
                     }}
                 />
             </HeaderButtons>
-        )
+        ),
+        headerRight: <HeaderButtons HeaderButtonComponent={HeaderButton}>
+            <Item
+                title="Cart"
+                iconName={Platform.OS === 'android' ? 'md-cart' : 'ios-shirt'}
+                onPress={() => {
+                    navData.navigation.navigate('Category');
+                }}
+            />
+        </HeaderButtons>,
     };
 };
 

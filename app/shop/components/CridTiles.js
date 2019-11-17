@@ -17,14 +17,20 @@ const GridTiles = props => {
         <TouchableOpacity onPress={props.onSelect}>
             <View style={styles.article}>
                 <Card>
-                    <Image style={styles.stretch} source={{uri: props.image}} />
-                    <View style={styles.countNum}>
-                        <Text style={styles.valCount}> {props.total} </Text>
+                    <Image style={styles.stretch} source={{uri: props.image}}/>
+                    <View style={styles.container}>
+                        <View style={styles.item}><Text style={styles.title}> {props.title} </Text></View>
+                        <View style={styles.item}><Text style={styles.valCount}> {props.total} </Text></View>
                     </View>
-                    <View>
-                        <Text style={styles.title}> {props.title} </Text>
-                        <Text style={styles.sub}> {props.eta.toUpperCase()} </Text>
-                    </View>
+                    <View><Text style={styles.days}> {props.eta.toUpperCase()} </Text></View>
+                    {/*<View style={styles.countNum}>*/}
+                    {/*    <Text style={styles.valCount}> {props.total} </Text>*/}
+                    {/*</View>*/}
+                    {/*<View>*/}
+                    {/*    <Text style={styles.title}> {props.title} </Text>*/}
+                    {/*    <Text style={styles.sub}> {props.eta.toUpperCase()} </Text>*/}
+                    {/*</View>*/}
+                    {/*<View style={styles.info}><Text> {props.total} </Text></View>*/}
                 </Card>
             </View>
         </TouchableOpacity>
@@ -32,13 +38,23 @@ const GridTiles = props => {
 };
 
 const styles = StyleSheet.create({
+    // info: {
+    //     flexDirection: 'row',
+    //     flexWrap: 'wrap',
+    //     alignItems: 'flex-start'
+    // },
+    days: {
+        color: Colors.deepGray,
+    },
+    item: {
+        width: '50%' // is 50% of container width
+    },
     article: {
         margin: 10,
     },
     title: {
         color: Colors.deepPrimaryColor,
         fontSize: 18,
-        paddingTop: 10,
         fontFamily: 'open-sans-bold'
     },
     stretch: {
@@ -48,27 +64,19 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.cleanYellow,
         padding: 20
     },
-    sub: {
-        color: Colors.primaryColor
-    },
     valCount: {
-        padding: 10,
-        fontSize: 28,
-        color: Colors.primaryColor
+        textAlign: 'right',
+        fontSize: 18,
+        color: Colors.sameBlue,
+        fontFamily: 'open-sans-bold'
     },
-    countNum: {
-        right: 0,
-        bottom: 0,
-        paddingRight: 20,
-        marginVertical: 25,
-        position: 'absolute'
+    container: {
+        paddingTop: 10,
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start' // if you want to fill rows left to right
     },
-    num: {
-        backgroundColor: Colors.deepPrimaryColor,
-        borderRadius: 10,
-        color: 'white',
-        padding: 3
-    }
 });
 
 export default GridTiles;

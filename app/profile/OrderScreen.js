@@ -16,7 +16,7 @@ const OrdersScreen = props => {
         const renderItem = (data, arr, selectedClass) => {
             isSelect = arr[0] === data.item;
             selectedClass = isSelect ? styles.selected : styles.list;
-            return <Text style={[styles.list, selectedClass]} onPress={(item) => { console.log(data.item)}}> {data.item} </Text>
+            return <Text style={[styles.list, selectedClass]} onPress={(item) => item}> {data.item} </Text>
             // let update = (item, arr) => {
             //     isSelect = arr.filter( val => val.indexOf(item) >= 0 );
             //     selectedClass = isSelect ? styles.selected : styles.list;

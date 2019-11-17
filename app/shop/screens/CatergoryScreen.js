@@ -1,11 +1,11 @@
 import React from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {FlatList, StyleSheet, Platform} from 'react-native';
 import {CATEGORIES} from "../../data/app-data";
 import Container from "../../widgets/Container";
 import HeaderButton from "../../widgets/HeaderButton";
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import GridTiles from "../components/CridTiles";
-
+import CustomHeaderButton from "../../widgets/CustomHeader"
 
 const CategoryScreen = props => {
 
@@ -48,7 +48,16 @@ CategoryScreen.navigationOptions = navData => {
                     }}
                 />
             </HeaderButtons>
-        )
+        ),
+        headerRight: <HeaderButtons HeaderButtonComponent={HeaderButton}>
+            <Item
+                title="Cart"
+                iconName={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
+                onPress={() => {
+                    navData.navigation.navigate('Order');
+                }}
+            />
+        </HeaderButtons>,
     };
 };
 

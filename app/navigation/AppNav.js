@@ -28,8 +28,9 @@ const defaultStackNavOptions = {
     headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primary
 };
 const WashesNavigator = createStackNavigator({
-    CategoryScreen: CategoryScreen,
-    WashScreen: WashScreen
+    Category: CategoryScreen,
+    WashScreen: WashScreen,
+    Order: OrderScreen
 });
 
 const OrdersNavigator = createStackNavigator({
@@ -90,7 +91,8 @@ const SiteNavigator =
         : createBottomTabNavigator(tabScreenConfig, {
             tabBarOptions: {
                 tabStyle: Colors.sameBlue,
-                activeTintColor: Colors.sameBlue
+                activeTintColor: Colors.sameBlue,
+                tabBarVisible: false
             }
         });
 
@@ -112,5 +114,18 @@ const MainNavigator = createDrawerNavigator({
     }
 });
 
+const ShopNavigator = createDrawerNavigator(
+    {
+        Washes: WashesNavigator,
+        Profile: ProfileNavigator
+    }, {
+        contentOptions: {
+            activeTintColor: Colors.deepPrimaryColor,
+            labelStyle: {
+                fontFamily: 'open-sans-bold'
+            }
+        }
+    }
+);
 
-export default createAppContainer(MainNavigator);
+export default createAppContainer(ShopNavigator);

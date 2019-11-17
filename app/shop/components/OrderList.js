@@ -14,7 +14,7 @@ export default class Store extends React.Component {
     }
 
     selectItem = data => {
-        console.log(data)
+        // console.log(data)
     };
 
     renderItem = data =>
@@ -24,7 +24,7 @@ export default class Store extends React.Component {
 
 
     render() {
-        console.log(this.orderItem)
+        // console.log(this.orderItem)
         return (
             <Container>
                 {/*<Text> {this.orderItem.title} </Text>*/}
