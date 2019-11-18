@@ -23,7 +23,6 @@ export default class ScrollTabs extends Component {
         // console.log(this.props.screens);
         return (
             <View style={{paddingTop: 50, paddingBottom: 50}}>
-                <ScrollView>
                     <FlatList
                         ref={screenList => (this.screenList = screenList)}
                         horizontal
@@ -33,13 +32,14 @@ export default class ScrollTabs extends Component {
                         data={this.props.screens}
                         onScroll={this.handleScroll}
                         showsHorizontalScrollIndicator={false}
+                        ListEmptyComponent={this.listEmptyComponent}
                         renderItem={({item}) => (
-                            <View style={styles.container}>
+                            <ScrollView contentContainerStyle={styles.contentContainer}>
                                 {item.screen}
-                            </View>
+                            </ScrollView>
                         )}
                         onViewableItemsChanged={this.onViewableItemsChanged}/>
-                </ScrollView>
+
                 <FlatList
                     extraData={this.state}
                     ref={headerList => (this.headerList = headerList)}
@@ -84,6 +84,14 @@ export default class ScrollTabs extends Component {
         }
     };
 
+    listEmptyComponent = () => {
+        return (
+            <View style={styles.screen}>
+                <Text> No items were found for this catalog. </Text>
+            </View>
+        )
+    }
+
     onViewableItemsChanged = info => {
         if (info.viewableItems.length === 1) {
             this.setState({currentPage: info.viewableItems[0].key});
@@ -99,7 +107,16 @@ export default class ScrollTabs extends Component {
 
 const styles = StyleSheet.create({
     container: {
+
+    },
+    screen: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    contentContainer: {
         height: Dimensions.get('window').height,
         width: Dimensions.get('window').width,
+        paddingVertical: 20
     }
 });
