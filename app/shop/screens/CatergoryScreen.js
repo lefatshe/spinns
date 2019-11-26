@@ -6,15 +6,44 @@ import HeaderButton from "../../widgets/HeaderButton";
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import GridTiles from "../components/CridTiles";
 import CustomHeaderButton from "../../widgets/CustomHeader"
+import {useSelector} from "react-redux";
 
 const CategoryScreen = props => {
 
+    const Totals = useSelector(state => state.cart);
+    console.log(Totals.Wash)
+
+    const TotalInger = Totals.Wash;
+    // console.log(Totals.Iron)
+    // console.log(Totals.DryClean)
+    // console.log(Totals.PremiumWash)
+
+    // const washState = useSelector(state => state.cart.Wash)
+
     const renderGridItem = (itemData, itemType) => {
+        let totalInCart = 0;
+
+        if (itemData.item.title === 'Wash') {
+             totalInCart = TotalInger;
+        }
+
+        // if (itemData.item.title === 'Iron') {
+        //     totalInCart = useSelector(state => state.cart.Iron);
+        // }
+        //
+        // if (itemData.item.title === 'DryClean') {
+        //     totalInCart = useSelector(state => state.cart.DryClean);
+        // }
+        //
+        // if (itemData.item.title === 'PremiumWash') {
+        //     totalInCart = useSelector(state => state.cart.PremiumWash);
+        // }
+
         return <GridTiles
             title={itemData.item.title}
             eta={itemData.item.eta}
             image={itemData.item.image}
-            total={itemData.item.total}
+            cartTotal={totalInCart}
             onSelect={() => {
                 props.navigation.navigate({
                     routeName: 'WashScreen',

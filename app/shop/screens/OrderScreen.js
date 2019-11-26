@@ -30,7 +30,6 @@ const OrderScreen = props => {
         );
     });
     const dispatch = useDispatch();
-    console.log(cartItems)
 
     return (
         <View style={styles.container}>
@@ -54,25 +53,23 @@ const OrderScreen = props => {
                             }}
                         />
                     )}
+                    ListFooterComponent={() => <View style={styles.button}>
+                        <View style={styles.summary}>
+                            <Text style={styles.summaryText}>
+                                <Text style={styles.amount}>R {cartTotalAmount.toFixed(2)}</Text>
+                            </Text>
+                            <Button
+                                color={Colors.sameBlue}
+                                title="Place order"
+                                disabled={cartItems.length === 0}
+                            />
+                        </View>
+                    </View>
+                    }
                 />
 
             </Container>
 
-
-            <View style={styles.bottom}>
-                <View style={styles.button}>
-                    <View style={styles.summary}>
-                        <Text style={styles.summaryText}>
-                            <Text style={styles.amount}>R {cartTotalAmount.toFixed(2)}</Text>
-                        </Text>
-                        <Button
-                            color={Colors.sameBlue}
-                            title="Place order"
-                            disabled={cartItems.length === 0}
-                        />
-                    </View>
-                </View>
-            </View>
         </View>
     );
 };

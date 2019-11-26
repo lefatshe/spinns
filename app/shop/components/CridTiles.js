@@ -10,9 +10,35 @@ import Colors from "../../theme/constants/Colors";
 import ListText from "../../widgets/ListText";
 import TitleText from "../../widgets/TitleText";
 import Card from "../../widgets/Card";
+import {useSelector} from "react-redux";
 
 
 const GridTiles = props => {
+    const category = props.title + 'Total'.toString();
+    // console.log(category)
+
+
+    function Category(props) {
+        // console.log("props ", props.category)
+
+        return <Text> {props.category} </Text>
+        // switch (props.category) {
+        //     case "Wash":
+        //         const washTotal = useSelector(state => state.cart.washTotal);
+        //         console.log("Wash = ", washTotal)
+        //         return <Text> {washTotal} </Text>
+        //     case "Iron":
+        //         const ironTotal = useSelector(state => state.cart.ironTotal);
+        //         console.log("Iron = ", ironTotal)
+        //         return <Text> {ironTotal} </Text>
+        //     default:
+        //         console.log("default ")
+        //         return <Text> 0 </Text>
+        // }
+    }
+
+    // const washTotal = useSelector(state => state.cart.washTotal);
+    // console.log(category)
     return (
         <TouchableOpacity onPress={props.onSelect}>
             <View style={styles.article}>
@@ -20,7 +46,12 @@ const GridTiles = props => {
                     <Image style={styles.stretch} source={{uri: props.image}}/>
                     <View style={styles.container}>
                         <View style={styles.item}><Text style={styles.title}> {props.title} </Text></View>
-                        <View style={styles.item}><Text style={styles.valCount}> {props.total} </Text></View>
+                        <View style={styles.item}>
+                            <Text style={styles.valCount}>
+                                {props.cartTotal}
+                                {/*<Category category={props.title}/>*/}
+                            </Text>
+                        </View>
                     </View>
                     <View><Text style={styles.days}> {props.eta.toUpperCase()} </Text></View>
                     {/*<View style={styles.countNum}>*/}

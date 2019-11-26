@@ -31,7 +31,6 @@ const WashItems = props => {
             { key: 't5', title: 'Women’s Lingerie', screen: <WashType listData={_typeWomenLingerie} categoryID={catId} /> },
             { key: 't6', title: 'Foot wear', screen: <WashType listData={_typeFootwear} categoryID={catId} /> },
             { key: 't7', title: 'Men’s Undergarments', screen: <WashType listData={_typeMenUndergarments} categoryID={catId} /> }
-
         ]}
     />
 };

@@ -4,11 +4,14 @@ import Product from "../../models/product";
 
 const initialState = {
     items: {},
-    totalAmount: 0
+    totalAmount: 0,
+    Wash: 0,
+    Iron: 0,
+    DryClean: 0,
+    PremiumWash: 0
 };
 
 export default (state = initialState, action) => {
-    // console.log('Cart here ', action.product)
     switch (action.type) {
         case ADD_TO_CART:
             // State addedProduct
@@ -23,18 +26,43 @@ export default (state = initialState, action) => {
 
             let orderItem;
 
+            let addedWash = 0;
+            let addedDryClean = 0;
+            let addedIron = 0;
+            let addedPremiumWash = 0;
+
             if (state.items[addedProduct.id]) {
                 // already have the item in the cart
                 orderItem = new CartItem(productId, productName, productPrice, productQuantity, productTotal, categoryTitle);
             } else {
                 // console.log(new CartItem(productId, productName, productPrice, productQuantity, productTotal, categoryTitle))
                 orderItem = new CartItem(productId, productName, productPrice, productQuantity, productTotal, categoryTitle);
+                switch (categoryTitle) {
+                    case "Wash":
+                        addedWash = state.washTotal + productQuantity
+                        break;
+                    case "DryClean":
+                        addedDryClean = state.DryCleanTotal + productQuantity
+                        break;
+                    case "Iron":
+                        return addedIron = state.ironTotal + productQuantity
+                        break;
+                    case "PremiumWash":
+                        return addedPremiumWash = state.PremiumTotal + productQuantity
+                        break;
+                }
             }
             return {
                 ...state,
                 items: {...state.items, [productId]: orderItem},
-                totalAmount: state.totalAmount + productTotal
+                totalAmount: state.totalAmount + productTotal,
+                Wash: addedWash,
+                iron: addedIron,
+                DryClean: addedDryClean,
+                Premium: addedPremiumWash,
             };
+
+            console.log(addedIron, addedDryClean)
         case REMOVE_FROM_CART:
             const selectedCartItem = state.items[action.pid];
             const currentQty = selectedCartItem.quantity;
@@ -49,9 +77,9 @@ export default (state = initialState, action) => {
                     selectedCartItem.total - selectedCartItem.price,
                     selectedCartItem.categoryTitle
                 );
-                updatedCartItems = { ...state.items, [action.pid]: updatedCartItem };
+                updatedCartItems = {...state.items, [action.pid]: updatedCartItem};
             } else {
-                updatedCartItems = { ...state.items };
+                updatedCartItems = {...state.items};
                 delete updatedCartItems[action.pid];
             }
             return {

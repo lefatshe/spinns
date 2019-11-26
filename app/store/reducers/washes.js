@@ -1,10 +1,29 @@
 import {WASHES} from "../../data/app-data";
+import {TOGGLE_FAVORITE} from "../actions/washes";
 
 const initialState = {
     washes: WASHES,
-    // userProducts: PRODUCTS.filter(prod => prod.ownerId === 'u1')
+    availableWashes: WASHES,
+    favouriteWashes: []
 }
 
-export default (state = initialState, action) => {
-    return state;
+const washesReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case TOGGLE_FAVORITE:
+            const existingIndex = state.favouriteWashes.findIndex(
+                wash => wash.id === action.washId
+            );
+            if (existingIndex >= 0) {
+                const updatedFavWashes = [...state.favouriteWashes];
+                updatedFavWashes.splice(existingIndex, 1);
+                return { ...state, favouriteWashes: updatedFavWashes };
+            } else {
+                const wash = state.washes.find(wash => wash.id === action.washId);
+                return { ...state, favouriteWashes: state.favouriteWashes.concat(wash) };
+            }
+        default:
+            return state;
+    }
 };
+
+export default washesReducer;
