@@ -6,6 +6,7 @@ import {Platform} from "react-native";
 import {MENU} from "../data/app-data";
 import WashScreen from "../shop/screens/WashScreen";
 import TitleText from "../widgets/TitleText";
+import OrdersPrev from "./menu/OrderPreview";
 
 const MenuScreen = props => {
     const PageTitle = props.navigation.getParam('menuItem');
@@ -14,7 +15,7 @@ const MenuScreen = props => {
     // </View>
     return <View>
         {PageTitle === 'Orders' ? (
-            <Text> Style here </Text>
+            <OrdersPrev />
         ) : (
             <View style={styles.headerWrapper}>
                 <TitleText style={styles.header}> {PageTitle} </TitleText>

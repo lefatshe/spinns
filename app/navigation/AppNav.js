@@ -14,8 +14,8 @@ import OrderScreen from "../shop/screens/OrderScreen";
 import ProfileScreen from "../profile/ProfileScreen";
 import Payments from "../profile/PaymentsScreen";
 import WashScreen from "../shop/screens/WashScreen";
-import OrdersScreen from "../profile/OrderScreen";
 import MenuScreen from "../profile/menuScreen";
+import OrdersScreen from "../profile/OrderScreen";
 
 const defaultStackNavOptions = {
     headerStyle: {
@@ -29,16 +29,31 @@ const defaultStackNavOptions = {
     },
     headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primary
 };
-const WashesNavigator = createStackNavigator({
-    Category: CategoryScreen,
-    WashScreen: WashScreen,
-    Order: OrderScreen
-});
+
+
+const WashesNavigator = createStackNavigator(
+    {
+            Category: CategoryScreen,
+            WashScreen: WashScreen,
+            Order: OrderScreen
+    },
+    {
+        navigationOptions: {
+            drawerIcon: drawerConfig => (
+                <Ionicons
+                    name={Platform.OS === 'android' ? 'md-shirt' : 'ios-shirt'}
+                    size={23}
+                    color={drawerConfig.tintColor}
+                />
+            )
+        },
+        defaultNavigationOptions: defaultStackNavOptions
+    }
+);
 
 const OrdersNavigator = createStackNavigator({
     OrderScreen: OrderScreen
 });
-
 const tabScreenConfig = {
     Washes: {
         screen: WashesNavigator,
@@ -66,15 +81,24 @@ const tabScreenConfig = {
 };
 const ProfileNavigator = createStackNavigator(
     {
-        Profile: ProfileScreen,
-        Order: OrdersScreen,
-        Payment: Payments,
-        Menu: MenuScreen
+         Profile: ProfileScreen,
+         Order: OrdersScreen,
+         Menu: MenuScreen
     },
     {
+        navigationOptions: {
+            drawerIcon: drawerConfig => (
+                <Ionicons
+                    name={Platform.OS === 'android' ? 'md-contact' : 'ios-contact'}
+                    size={23}
+                    color={drawerConfig.tintColor}
+                />
+            )
+        },
         defaultNavigationOptions: defaultStackNavOptions
     }
 );
+
 const helpNavigator = createStackNavigator(
     {
         Profile: ProfileScreen

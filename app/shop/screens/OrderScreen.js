@@ -7,6 +7,8 @@ import HeaderButton from "../../widgets/HeaderButton";
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import Container from "../../widgets/Container";
 import * as cartActions from '../../store/actions/cart';
+import * as ordersActions from '../../store/actions/order';
+
 
 const OrderScreen = props => {
 
@@ -69,6 +71,9 @@ const OrderScreen = props => {
                                     color={Colors.sameBlue}
                                     title="Place order"
                                     disabled={cartItems.length === 0}
+                                    onPress={() => {
+                                        dispatch(ordersActions.addOrder(cartItems, cartTotalAmount));
+                                    }}
                                 />
                             </View>
                         ) : (
@@ -101,7 +106,7 @@ OrderScreen.navigationOptions = navData => {
         headerRight: <HeaderButtons HeaderButtonComponent={HeaderButton}>
             <Item
                 title="Cart"
-                iconName={Platform.OS === 'android' ? 'md-cart' : 'ios-shirt'}
+                iconName={Platform.OS === 'android' ? 'md-shirt' : 'ios-shirt'}
                 onPress={() => {
                     navData.navigation.navigate('Category');
                 }}
