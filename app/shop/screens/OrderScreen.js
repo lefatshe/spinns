@@ -48,22 +48,32 @@ const OrderScreen = props => {
                             total={itemData.item.total}
                             categoryTitle={itemData.item.categoryTitle}
                             deletable
+                            decrement={() => {
+                                dispatch(cartActions.decrementFromCart(itemData.item.id));
+                            }}
+                            increment={() => {
+                                dispatch(cartActions.incrementFromCart(itemData.item.id));
+                            }}
                             onRemove={() => {
                                 dispatch(cartActions.removeFromCart(itemData.item.id));
                             }}
                         />
                     )}
                     ListFooterComponent={() => <View style={styles.button}>
-                        <View style={styles.summary}>
-                            <Text style={styles.summaryText}>
-                                <Text style={styles.amount}>R {cartTotalAmount.toFixed(2)}</Text>
-                            </Text>
-                            <Button
-                                color={Colors.sameBlue}
-                                title="Place order"
-                                disabled={cartItems.length === 0}
-                            />
-                        </View>
+                        {cartItems.length !== 0 ? (
+                            <View style={styles.summary}>
+                                <Text style={styles.summaryText}>
+                                    <Text style={styles.amount}>R {cartTotalAmount.toFixed(2)}</Text>
+                                </Text>
+                                <Button
+                                    color={Colors.sameBlue}
+                                    title="Place order"
+                                    disabled={cartItems.length === 0}
+                                />
+                            </View>
+                        ) : (
+                            <Text> Nothing has been added to cart. </Text>
+                        )}
                     </View>
                     }
                 />
@@ -76,7 +86,7 @@ const OrderScreen = props => {
 
 OrderScreen.navigationOptions = navData => {
     return {
-        headerTitle: 'Orders',
+        headerTitle: 'YOUR CART',
         headerLeft: (
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <Item

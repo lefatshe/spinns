@@ -14,7 +14,7 @@ WashScreen.navigationOptions = navigationData => {
     const catId = navigationData.navigation.getParam('categoryId');
     const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
     return {
-        headerTitle: selectedCategory.title,
+        headerTitle: selectedCategory.title.toUpperCase(),
         headerRight: <HeaderButtons HeaderButtonComponent={HeaderButton}>
             <Item
                 title="Cart"

@@ -9,34 +9,35 @@ import CustomHeaderButton from "../../widgets/CustomHeader"
 import {useSelector} from "react-redux";
 
 const CategoryScreen = props => {
-
-    const Totals = useSelector(state => state.cart);
-    console.log(Totals.Wash)
-
-    const TotalInger = Totals.Wash;
+    // console.log(Totals.Wash)
     // console.log(Totals.Iron)
     // console.log(Totals.DryClean)
     // console.log(Totals.PremiumWash)
-
     // const washState = useSelector(state => state.cart.Wash)
+    // const Totals = useSelector(state => state.cart);
+
+    const totalWashState = useSelector(state => state.cart.Wash);
+    const totalIronState = 0;
+    const totalDryCleanState = 0;
+    const totalPremiumState = 0;
 
     const renderGridItem = (itemData, itemType) => {
         let totalInCart = 0;
 
-        if (itemData.item.title === 'Wash') {
-             totalInCart = TotalInger;
-        }
-
+        // if (itemData.item.title === 'Wash') {
+        //     totalInCart = totalWashState;
+        // }
+        //
         // if (itemData.item.title === 'Iron') {
-        //     totalInCart = useSelector(state => state.cart.Iron);
+        //     totalInCart = totalIronState;
         // }
         //
         // if (itemData.item.title === 'DryClean') {
-        //     totalInCart = useSelector(state => state.cart.DryClean);
+        //     totalInCart = totalDryCleanState;
         // }
         //
         // if (itemData.item.title === 'PremiumWash') {
-        //     totalInCart = useSelector(state => state.cart.PremiumWash);
+        //     totalInCart = totalPremiumState;
         // }
 
         return <GridTiles
@@ -48,7 +49,8 @@ const CategoryScreen = props => {
                 props.navigation.navigate({
                     routeName: 'WashScreen',
                     params: {
-                        categoryId: itemData.item.id
+                        categoryId: itemData.item.id,
+                        categoryTitle: itemData.item.title
                     }
                 });
             }}/>;
@@ -66,7 +68,7 @@ const CategoryScreen = props => {
 
 CategoryScreen.navigationOptions = navData => {
     return {
-        headerTitle: 'Categories',
+        headerTitle: 'CATEGORIES',
         headerLeft: (
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <Item
@@ -90,7 +92,6 @@ CategoryScreen.navigationOptions = navData => {
     };
 };
 
-const styles = StyleSheet.create({
-});
+const styles = StyleSheet.create({});
 
 export default CategoryScreen;

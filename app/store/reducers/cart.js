@@ -1,4 +1,9 @@
-import {ADD_TO_CART, REMOVE_FROM_CART} from "../actions/cart";
+import {
+    ADD_TO_CART,
+    DECREMENT_FROM_CART,
+    REMOVE_FROM_CART,
+    INCREMENT_FROM_CART
+} from "../actions/cart";
 import CartItem from '../../models/cartItem'
 import Product from "../../models/product";
 
@@ -37,45 +42,59 @@ export default (state = initialState, action) => {
             } else {
                 // console.log(new CartItem(productId, productName, productPrice, productQuantity, productTotal, categoryTitle))
                 orderItem = new CartItem(productId, productName, productPrice, productQuantity, productTotal, categoryTitle);
-                switch (categoryTitle) {
-                    case "Wash":
-                        addedWash = state.washTotal + productQuantity
-                        break;
-                    case "DryClean":
-                        addedDryClean = state.DryCleanTotal + productQuantity
-                        break;
-                    case "Iron":
-                        return addedIron = state.ironTotal + productQuantity
-                        break;
-                    case "PremiumWash":
-                        return addedPremiumWash = state.PremiumTotal + productQuantity
-                        break;
-                }
+                // switch (categoryTitle) {
+                //     case "Wash":
+                //         addedWash = state.washTotal + productQuantity
+                //         break;
+                //     case "DryClean":
+                //         addedDryClean = state.DryCleanTotal + productQuantity
+                //         break;
+                //     case "Iron":
+                //         return addedIron = state.ironTotal + productQuantity
+                //         break;
+                //     case "PremiumWash":
+                //         return addedPremiumWash = state.PremiumTotal + productQuantity
+                //         break;
+                // }
             }
             return {
                 ...state,
                 items: {...state.items, [productId]: orderItem},
                 totalAmount: state.totalAmount + productTotal,
-                Wash: addedWash,
-                iron: addedIron,
-                DryClean: addedDryClean,
-                Premium: addedPremiumWash,
+                Wash: productQuantity,
+                iron: productQuantity,
+                DryClean: productQuantity,
+                Premium: productQuantity,
             };
 
-            console.log(addedIron, addedDryClean)
         case REMOVE_FROM_CART:
-            const selectedCartItem = state.items[action.pid];
-            const currentQty = selectedCartItem.quantity;
+            const removeCartItem = state.items[action.pid];
+            let removeCartItems;
+
+            removeCartItems = {...state.items};
+            delete removeCartItems[action.pid];
+
+            return {
+                ...state,
+                items: removeCartItems,
+                totalAmount: state.totalAmount - removeCartItem.total
+            };
+
+            break;
+
+        case DECREMENT_FROM_CART:
+            const decrementCartItem = state.items[action.pid];
+            // const currentQty = decrementCartItem.quantity;
             let updatedCartItems;
-            if (currentQty > 1) {
+            if (decrementCartItem.quantity > 1) {
                 // need to reduce it, not erase it
                 const updatedCartItem = new CartItem(
-                    selectedCartItem.id,
-                    selectedCartItem.title,
-                    selectedCartItem.price,
-                    selectedCartItem.quantity - 1,
-                    selectedCartItem.total - selectedCartItem.price,
-                    selectedCartItem.categoryTitle
+                    decrementCartItem.id,
+                    decrementCartItem.title,
+                    decrementCartItem.price,
+                    decrementCartItem.quantity - 1,
+                    decrementCartItem.total - decrementCartItem.price,
+                    decrementCartItem.categoryTitle
                 );
                 updatedCartItems = {...state.items, [action.pid]: updatedCartItem};
             } else {
@@ -85,8 +104,35 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 items: updatedCartItems,
-                totalAmount: state.totalAmount - selectedCartItem.price
+                totalAmount: state.totalAmount - decrementCartItem.price
             };
+            break;
+
+        case INCREMENT_FROM_CART:
+            const incrementCartItem = state.items[action.pid];
+            // const currentQty = decrementCartItem.quantity;
+            let datedCartItems;
+            if (incrementCartItem.quantity > 1) {
+                // need to reduce it, not erase it
+                const updatedCartItem = new CartItem(
+                    incrementCartItem.id,
+                    incrementCartItem.title,
+                    incrementCartItem.price,
+                    incrementCartItem.quantity + 1,
+                    incrementCartItem.total + incrementCartItem.price,
+                    incrementCartItem.categoryTitle
+                );
+                datedCartItems = {...state.items, [action.pid]: updatedCartItem};
+            } else {
+                datedCartItems = {...state.items};
+                delete datedCartItems[action.pid];
+            }
+            return {
+                ...state,
+                items: datedCartItems,
+                totalAmount: state.totalAmount + incrementCartItem.price
+            };
+            break;
     }
     return state;
 };

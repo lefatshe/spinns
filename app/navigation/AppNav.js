@@ -14,6 +14,8 @@ import OrderScreen from "../shop/screens/OrderScreen";
 import ProfileScreen from "../profile/ProfileScreen";
 import Payments from "../profile/PaymentsScreen";
 import WashScreen from "../shop/screens/WashScreen";
+import OrdersScreen from "../profile/OrderScreen";
+import MenuScreen from "../profile/menuScreen";
 
 const defaultStackNavOptions = {
     headerStyle: {
@@ -65,7 +67,9 @@ const tabScreenConfig = {
 const ProfileNavigator = createStackNavigator(
     {
         Profile: ProfileScreen,
-        Payment: Payments
+        Order: OrdersScreen,
+        Payment: Payments,
+        Menu: MenuScreen
     },
     {
         defaultNavigationOptions: defaultStackNavOptions

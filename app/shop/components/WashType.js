@@ -11,16 +11,23 @@ import Card from "../../widgets/Card";
 
 const WashType = props => {
 
+    // console.log(props.type)
+
     const renderWashItem = itemData => {
         return <WashItem id={itemData.item.id} title={itemData.item.title} categoryID={props.categoryID} />;
     };
 
     return <Container>
         <View>
-            <FlatList
-                data={props.listData}
-                keyExtractor={(item, index) => item.id}
-                renderItem={renderWashItem}/>
+            {props.listData.length !== 0 ? (
+                <FlatList
+                    data={props.listData}
+                    keyExtractor={(item, index) => item.id}
+                    renderItem={renderWashItem}/>
+            ) : (
+                <Text> 0 {props.type} in {props.categoryTitle} </Text>
+            )}
+
         </View>
     </Container> ;
 };

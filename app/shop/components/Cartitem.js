@@ -29,14 +29,14 @@ const CartItem = props => {
                 <View style={styles.totalItem}>
                     <View style={styles.itemData}>
                         <View style={styles.itemBtm}>
-                            <TouchableOpacity style={styles.deleteButton} onPress={props.onRemove}>
+                            <TouchableOpacity style={styles.deleteButton} onPress={props.decrement}>
                                 <Ionicons name={Platform.OS === 'android' ? 'md-return-left' : 'ios-return-left'}
                                           size={23}
                                           color="#4E8AF1"/>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.itemBtm}>
-                            <TouchableOpacity style={styles.deleteButton} onPress={props.onRemove}>
+                            <TouchableOpacity style={styles.deleteButton} onPress={props.increment}>
                                 <Ionicons name={Platform.OS === 'android' ? 'md-return-right' : 'ios-return-right'}
                                           size={23}
                                           color="#4E8AF1"/>

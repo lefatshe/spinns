@@ -24,13 +24,13 @@ const WashItems = props => {
 
     return <ScrollTabs
         screens={[
-            { key: 't1', title: 'Headgear', screen: <WashType listData={_typeHeadgear} categoryID={catId}/> },
-            { key: 't2', title: 'Tops', screen: <WashType listData={_typeTops} categoryID={catId} /> },
-            { key: 't3', title: 'Full Body Wear', screen: <WashType listData={_typeFullBodyWear} categoryID={catId} /> },
-            { key: 't4', title: 'Outerwear', screen: <WashType listData={_typeOuterwear} categoryID={catId} /> },
-            { key: 't5', title: 'Women’s Lingerie', screen: <WashType listData={_typeWomenLingerie} categoryID={catId} /> },
-            { key: 't6', title: 'Foot wear', screen: <WashType listData={_typeFootwear} categoryID={catId} /> },
-            { key: 't7', title: 'Men’s Undergarments', screen: <WashType listData={_typeMenUndergarments} categoryID={catId} /> }
+            { key: 't1', title: 'Headgear', screen: <WashType WashType type={'Headgear'} listData={_typeHeadgear} categoryTitle={catTitle} categoryID={catId}/> },
+            { key: 't2', title: 'Tops', screen: <WashType type={'Tops'} listData={_typeTops} categoryTitle={catTitle} categoryID={catId} /> },
+            { key: 't3', title: 'Full Body Wear', screen: <WashType type={'Full Body Wear'} listData={_typeFullBodyWear} categoryTitle={catTitle} categoryID={catId} /> },
+            { key: 't4', title: 'Outerwear', screen: <WashType type={'Outerwear'} listData={_typeOuterwear} categoryTitle={catTitle} categoryID={catId} /> },
+            { key: 't5', title: 'Women’s Lingerie', screen: <WashType type={'Women’s Lingerie'} listData={_typeWomenLingerie} categoryTitle={catTitle} categoryID={catId} /> },
+            { key: 't6', title: 'Foot wear', screen: <WashType type={'Foot wear'} listData={_typeFootwear} categoryTitle={catTitle} categoryID={catId} /> },
+            { key: 't7', title: 'Men’s Undergarments', screen: <WashType type={'Men’s Undergarments'} listData={_typeMenUndergarments} categoryTitle={catTitle} categoryID={catId} /> }
         ]}
     />
 };

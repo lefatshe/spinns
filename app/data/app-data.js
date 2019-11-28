@@ -6,6 +6,7 @@ import User from "../models/user";
 import Menu from "../models/menu";
 
 export const MENU = [
+    new Menu("m0", 'Orders'),
     new Menu("m1", 'Preference'),
     new Menu("m2", 'Payments'),
     new Menu("m3", 'Free wash'),
@@ -14,7 +15,7 @@ export const MENU = [
 ];
 
 export const USER = [
-    new User("o1", 'John Wick', '89 Wolfstock street, Welcriem, RSA ')
+    new User("o1", 'John Wick', '\n' + '1 Westbrooke Dr, Strathavon, Sandton, 2031\n')
 ];
 
 export const ORDERS = [
@@ -28,8 +29,8 @@ export const ORDERS = [
 export const CATEGORIES = [
     new Category('c1', 'Wash', '1 day', '#FFF', 'https://imgbbb.com/images/2019/10/25/wash.jpg', 0),
     new Category('c2', 'Iron', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/25/iron.jpg', 0),
-    new Category('c3', 'DryClean', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/25/dry.jpg', 0),
-    new Category('c4', 'PremiumWash', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/25/primium.jpg', 0)
+    new Category('c3', 'Dry Clean', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/25/dry.jpg', 0),
+    new Category('c4', 'Premium', '2 days', '#FFF', 'https://imgbbb.com/images/2019/10/25/primium.jpg', 0)
 ];
 
 export const TYPES = [
