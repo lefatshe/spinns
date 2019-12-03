@@ -4,6 +4,7 @@ import {
     REMOVE_FROM_CART,
     INCREMENT_FROM_CART
 } from "../actions/cart";
+import { ADD_ORDER } from '../actions/orders';
 import CartItem from '../../models/cartItem'
 import Product from "../../models/product";
 
@@ -133,6 +134,9 @@ export default (state = initialState, action) => {
                 totalAmount: state.totalAmount + incrementCartItem.price
             };
             break;
+
+        case ADD_ORDER:
+            return initialState;
     }
     return state;
 };

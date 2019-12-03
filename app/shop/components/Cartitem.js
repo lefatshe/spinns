@@ -27,7 +27,7 @@ const CartItem = props => {
                     <Text style={styles.mainText}> {props.categoryTitle} </Text>
                 </View>
                 <View style={styles.totalItem}>
-                    <View style={styles.itemData}>
+                    { props.deletable && ( <View style={styles.itemData}>
                         <View style={styles.itemBtm}>
                             <TouchableOpacity style={styles.deleteButton} onPress={props.decrement}>
                                 <Ionicons name={Platform.OS === 'android' ? 'md-return-left' : 'ios-return-left'}
@@ -49,7 +49,7 @@ const CartItem = props => {
                                           color="#293064"/>
                             </TouchableOpacity>
                         </View>
-                    </View>
+                    </View> )}
                 </View>
             </View>
         </View>

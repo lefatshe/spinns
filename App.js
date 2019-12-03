@@ -9,11 +9,12 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 
 import washersReducers from "./app/store/reducers/washes";
 import cartReducers from "./app/store/reducers/cart";
+import ordersReducer from "./app/store/reducers/orders";
 
 const rootReducer = combineReducers({
     washes: washersReducers,
     cart: cartReducers,
-    // orders: ordersReducer
+    orders: ordersReducer
 });
 
 const store = createStore(rootReducer, composeWithDevTools());

@@ -7,7 +7,7 @@ import HeaderButton from "../../widgets/HeaderButton";
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import Container from "../../widgets/Container";
 import * as cartActions from '../../store/actions/cart';
-import * as ordersActions from '../../store/actions/order';
+import * as ordersActions from '../../store/actions/orders';
 
 
 const OrderScreen = props => {
@@ -77,7 +77,7 @@ const OrderScreen = props => {
                                 />
                             </View>
                         ) : (
-                            <Text> Nothing has been added to cart. </Text>
+                            <Text> No items in cart. </Text>
                         )}
                     </View>
                     }
