@@ -73,6 +73,7 @@ const OrderScreen = props => {
                                     disabled={cartItems.length === 0}
                                     onPress={() => {
                                         dispatch(ordersActions.addOrder(cartItems, cartTotalAmount));
+                                        props.navigation.navigate({routeName: 'Category'});
                                     }}
                                 />
                             </View>

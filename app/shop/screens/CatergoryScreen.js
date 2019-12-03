@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, StyleSheet, Platform} from 'react-native';
+import {FlatList, StyleSheet, Platform, View, Text} from 'react-native';
 import {CATEGORIES} from "../../data/app-data";
 import Container from "../../widgets/Container";
 import HeaderButton from "../../widgets/HeaderButton";
@@ -17,17 +17,17 @@ const CategoryScreen = props => {
     // const Totals = useSelector(state => state.cart);
 
     const totalWashState = useSelector(state => state.cart.Wash);
-    const totalIronState = 0;
-    const totalDryCleanState = 0;
-    const totalPremiumState = 0;
+    const orders = useSelector(state => state.orders.orders);
+
+    console.log(orders.length)
 
     const renderGridItem = (itemData, itemType) => {
-        let totalInCart = 0;
+        let totalInCart = -0;
 
-        // if (itemData.item.title === 'Wash') {
-        //     totalInCart = totalWashState;
-        // }
-        //
+        if (itemData.item.title === 'Wash') {
+            totalInCart = totalWashState;
+        }
+
         // if (itemData.item.title === 'Iron') {
         //     totalInCart = totalIronState;
         // }
@@ -59,6 +59,9 @@ const CategoryScreen = props => {
     return (
         <Container>
             <FlatList
+                ListHeaderComponent={() => <Text style={styles.catTitle}> {orders.length > 0 ? (
+                    <Text style={{color: 'red'}} onPress={() => { props.navigation.navigate({routeName: 'Profile'}); }}> You have an order's placed, track here.  </Text>
+                ) : ''} </Text>}
                 keyExtractor={(item, index) => item.id}
                 data={CATEGORIES}
                 renderItem={renderGridItem}/>
@@ -92,6 +95,11 @@ CategoryScreen.navigationOptions = navData => {
     };
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    catTitle: {
+        flex: 1,
+        textAlign: 'center',
+    }
+});
 
 export default CategoryScreen;
