@@ -16,6 +16,7 @@ import Payments from "../profile/PaymentsScreen";
 import WashScreen from "../shop/screens/WashScreen";
 import MenuScreen from "../profile/menuScreen";
 import OrdersScreen from "../profile/OrderScreen";
+import ProductScreen from "../admin/screens/ProductsScreen";
 
 const defaultStackNavOptions = {
     headerStyle: {
@@ -99,6 +100,24 @@ const ProfileNavigator = createStackNavigator(
     }
 );
 
+const AdminNavigator = createStackNavigator(
+    {
+        Product: ProductScreen
+    },
+    {
+        navigationOptions: {
+            drawerIcon: drawerConfig => (
+                <Ionicons
+                    name={Platform.OS === 'android' ? 'md-create' : 'ios-create'}
+                    size={23}
+                    color={drawerConfig.tintColor}
+                />
+            )
+        },
+        defaultNavigationOptions: defaultStackNavOptions
+    }
+);
+
 const helpNavigator = createStackNavigator(
     {
         Profile: ProfileScreen
@@ -145,7 +164,8 @@ const MainNavigator = createDrawerNavigator({
 const ShopNavigator = createDrawerNavigator(
     {
         Washes: WashesNavigator,
-        Profile: ProfileNavigator
+        Profile: ProfileNavigator,
+        Admin: AdminNavigator
     }, {
         contentOptions: {
             activeTintColor: Colors.deepPrimaryColor,

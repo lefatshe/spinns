@@ -4,6 +4,7 @@ import Types from "../models/washtypes";
 import Order from "../models/order";
 import User from "../models/user";
 import Menu from "../models/menu";
+import Product from '../models/product';
 
 export const MENU = [
     new Menu("m0", 'Orders'),
@@ -86,3 +87,8 @@ export const WASHES = [
     // Foot wear
     new Washes('w32', '[\'c1\']','Socks', 'Footwear', '', 'Footwear', 0, 10),
 ];
+
+export const PRODUCTS = [
+    new Product('p1', 'Caps and Hats', 15.99, 0, 0, 'Wash', 'u1'),
+    new Product('p2', 'Headbands', 8.99, 0, 0, 'Wash', 'u1'),
+]
