@@ -22,6 +22,7 @@ const WashType = props => {
             {props.listData.length !== 0 ? (
                 <FlatList
                     data={props.listData}
+                    contentContainerStyle={{ paddingBottom: 20}}
                     keyExtractor={(item, index) => item.id}
                     renderItem={renderWashItem}/>
             ) : (

@@ -60,7 +60,7 @@ const CategoryScreen = props => {
         <Container>
             <FlatList
                 ListHeaderComponent={() => <Text style={styles.catTitle}> {orders.length > 0 ? (
-                    <Text style={{color: 'red'}} onPress={() => { props.navigation.navigate({routeName: 'Profile'}); }}> You have an order's placed, track here.  </Text>
+                    <Text style={{color: 'red'}} onPress={() => { props.navigation.navigate({routeName: 'Profile'}); }}> You have placed an order, track here.  </Text>
                 ) : ''} </Text>}
                 keyExtractor={(item, index) => item.id}
                 data={CATEGORIES}
