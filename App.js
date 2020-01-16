@@ -6,6 +6,7 @@ import OrderNavigator from "./app/navigation/AppNav";
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
 import ReduxThunk from 'redux-thunk';
 
 import washersReducers from "./app/store/reducers/washes";
@@ -26,8 +27,12 @@ useScreens();
 const fetchFonts = () => {
     return Font.loadAsync({
         'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
-        'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf')
+        'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+        'Roboto': require('native-base/Fonts/Roboto.ttf'),
+        'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+        ...Ionicons.font,
     });
+    this.setState({ isReady: true });
 };
 
 export default function App() {
